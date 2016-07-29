@@ -57,8 +57,10 @@ public abstract class RewiMod {
 
 		this.messages.load(language);
 		this.registerEvents();
+		
+		this.setDisplayTitle("Minecraft " + this.getMinecraftVersion() + " - " + this.getName() + " " + this.getVersion());
 
-		LOGGER.info("Successfully Initialized " + this.getModId() + this.getVersion());
+		LOGGER.info("Successfully initialized " + this.getModId() + " " + this.getVersion());
 	}
 
 	/**
@@ -101,6 +103,13 @@ public abstract class RewiMod {
 	 * @return the version as String
 	 */
 	public abstract String getVersion();
+	
+	/**
+	 * Sets the title of the LWJGL Minecraft window
+	 * 
+	 * @param displayTitle the title as String
+	 */
+	public abstract void setDisplayTitle(String displayTitle);
 
 	/**
 	 * Gets the handler for handling textures

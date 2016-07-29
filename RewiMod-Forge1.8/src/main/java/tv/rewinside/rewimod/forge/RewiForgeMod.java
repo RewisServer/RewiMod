@@ -26,6 +26,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLFingerprintViolationEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import org.lwjgl.opengl.Display;
 import tv.rewinside.rewimod.core.RewiMod;
 import tv.rewinside.rewimod.core.handlers.IGlStateManagerHandler;
 import tv.rewinside.rewimod.core.handlers.IGuiHandler;
@@ -76,6 +77,11 @@ public class RewiForgeMod extends RewiMod {
 	@Override
 	public String getVersion() {
 		return "%MOD_VERSION%";
+	}
+	
+	@Override
+	public void setDisplayTitle(String displayTitle) {
+		Display.setTitle(displayTitle);
 	}
 
 	@Override
