@@ -26,6 +26,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLFingerprintViolationEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import org.lwjgl.opengl.Display;
 import tv.rewinside.rewimod.core.RewiMod;
 import tv.rewinside.rewimod.core.handlers.IGlStateManagerHandler;
 import tv.rewinside.rewimod.core.handlers.IGuiHandler;
@@ -44,7 +45,12 @@ public class RewiForgeMod extends RewiMod {
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		super.initialize(Minecraft.getMinecraft().getLanguageManager().getCurrentLanguage().getLanguageCode(), Minecraft.getMinecraft().getVersion());
+		super.initialize(
+				Minecraft.getMinecraft().getLanguageManager().getCurrentLanguage().getLanguageCode(),
+				Minecraft.getMinecraft().getVersion(),
+				Minecraft.getMinecraft().getSession().getPlayerID(),
+				Minecraft.getMinecraft().getSession().getUsername()
+		);
 	}
 
 	@Mod.EventHandler
@@ -78,6 +84,11 @@ public class RewiForgeMod extends RewiMod {
 		return "%MOD_VERSION%";
 	}
 
+	@Override
+	public void setDisplayTitle(String displayTitle) {
+		Display.setTitle(displayTitle);
+	}
+	
 	@Override
 	public ITextureHandler getTextureHandler() {
 		return this.textureHandler;
