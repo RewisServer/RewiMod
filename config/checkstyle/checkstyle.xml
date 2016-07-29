@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC
+    "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
+    "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+
+<module name="Checker">
+	
+	<!-- Check for new Line at EOF -->
+	<module name="NewlineAtEndOfFile"/>
+	
+	<module name="TreeWalker">
+		
+		<!-- Check if Methods hava Javadoc Comments -->
+		<module name="JavadocMethod"/>
+		
+		<!-- Check if Constants are written in Capital Letters -->
+		<module name="ConstantName"/>
+		
+		<!-- Check if Package Name is correct -->
+		<module name="PackageName"/>
+
+		<!-- Check if non static fields begin lower case -->
+		<module name="MemberName"/>
+		
+		<!-- Check if method identifiers begin lower case -->
+		<module name="MethodName"/>
+
+		<!-- Check for unused imports -->
+		<module name="UnusedImports"/>
+		
+		<!-- Check different whitespaces -->
+		<module name="EmptyForIteratorPad"/>
+		<module name="GenericWhitespace"/>
+		<module name="MethodParamPad"/>
+		<module name="ParenPad"/>
+		<module name="WhitespaceAfter"/>
+
+		<!-- Check Blocks -->
+		<module name="AvoidNestedBlocks"/>
+		<module name="EmptyBlock"/>
+		<module name="LeftCurly"/>
+		<module name="RightCurly"/>
+		<module name="NeedBraces">
+			<property name="allowSingleLineStatement" value="true"/>
+		</module>
+		
+		<!-- Check Code -->
+		<module name="EmptyStatement"/>
+		<module name="EqualsHashCode"/>
+		<module name="MissingSwitchDefault"/>
+		<module name="IllegalThrows"/>
+		<module name="IllegalCatch"/>
+		<module name="SimplifyBooleanExpression"/>
+		<module name="SimplifyBooleanReturn"/>
+		<module name="HideUtilityClassConstructor"/>
+		
+		<!-- Check Misc -->
+		<module name="ArrayTypeStyle"/>
+	</module>
+	
+	<!-- Check Classes for License Header -->
+	<module name="Header">
+		<property name="headerFile" value="${basedir}/config/checkstyle/header.txt" />
+		<property name="fileExtensions" value="java" />
+	</module>
+</module>

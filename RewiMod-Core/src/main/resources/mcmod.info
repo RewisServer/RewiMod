@@ -1,0 +1,16 @@
+[
+{
+  "modid": "RewiMod",
+  "name": "RewiMod",
+  "description": "Eine Erweiterung des Minecraftclients",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://github.com/RewisServer/RewiMod",
+  "updateUrl": "",
+  "authorList": ["rewinside.tv", "RewiMod Team"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

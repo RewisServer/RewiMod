@@ -1,0 +1,2 @@
+ext.simpleVersion = "0.1.0"
+version = "${ext.simpleVersion}-${rootProject.ext.gitCommitHash}"

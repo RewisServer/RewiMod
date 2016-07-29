@@ -1,0 +1,13 @@
+ext.simpleVersion = "0.1.0"
+version = "${ext.simpleVersion}-${rootProject.ext.gitCommitHash}"
+
+minecraft {
+    version = "1.9.4-12.17.0.1976"
+    mappings = "snapshot_20160518"
+	runDir = "../run"
+	
+	replaceIn "/tv/rewinside/rewimod/forge/RewiForgeMod.java"
+	replace "%MOD_ID%", rootProject.name
+	replace "%MOD_NAME%", rootProject.name
+	replace "%MOD_VERSION%", project.ext.simpleVersion
+}

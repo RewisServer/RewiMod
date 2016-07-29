@@ -1,0 +1,42 @@
+.gradle
+build/
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# Cache of project
+.gradletasknamecache
+
+# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
+# gradle/wrapper/gradle-wrapper.properties
+
+.classpath
+.project
+.settings
+eclipse
+.idea
+*.iml
+*.ipr
+*.iws
+
+bin
+build
+target
+.gradle
+forge-download
+out
+run
+
+/dependency-reduced-pom.xml
+*-private.sh
+
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+.nb-gradle/

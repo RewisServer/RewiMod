@@ -1,0 +1,3 @@
+rootProject.name = 'RewiMod'
+
+include 'RewiMod-Core', 'RewiMod-Forge1.8', 'RewiMod-Forge1.9', 'RewiMod-Forge1.10'
