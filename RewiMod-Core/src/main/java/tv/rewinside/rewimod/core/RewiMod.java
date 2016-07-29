@@ -36,6 +36,8 @@ public abstract class RewiMod {
 
 	@Getter private final Messages messages = new Messages();
 
+	@Getter private String uuid;
+	@Getter private String username;
 	@Getter private String minecraftVersion;
 
 	/**
@@ -50,15 +52,19 @@ public abstract class RewiMod {
 	 *
 	 * @param language the selected Game Language
 	 * @param mcVersion the current Minecraft Version
+	 * @param uuid the UUID of the user
+	 * @param username the username of the user
 	 */
-	protected void initialize(String language, String mcVersion) {
+	protected void initialize(String language, String mcVersion, String uuid, String username) {
 		instance = this;
 		this.minecraftVersion = mcVersion;
+		this.uuid = uuid;
+		this.username = username;
 
 		this.messages.load(language);
 		this.registerEvents();
-		
-		this.setDisplayTitle("Minecraft " + this.getMinecraftVersion() + " - " + this.getName() + " " + this.getVersion());
+
+		this.setDisplayTitle("Minecraft " + this.getMinecraftVersion() + " - " + this.getName() + " " + this.getVersion() + " - " + this.getUsername());
 
 		LOGGER.info("Successfully initialized " + this.getModId() + " " + this.getVersion());
 	}
@@ -103,10 +109,10 @@ public abstract class RewiMod {
 	 * @return the version as String
 	 */
 	public abstract String getVersion();
-	
+
 	/**
 	 * Sets the title of the LWJGL Minecraft window
-	 * 
+	 *
 	 * @param displayTitle the title as String
 	 */
 	public abstract void setDisplayTitle(String displayTitle);

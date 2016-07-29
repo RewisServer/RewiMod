@@ -45,7 +45,12 @@ public class RewiForgeMod extends RewiMod {
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		super.initialize(Minecraft.getMinecraft().getLanguageManager().getCurrentLanguage().getLanguageCode(), Minecraft.getMinecraft().getVersion());
+		super.initialize(
+				Minecraft.getMinecraft().getLanguageManager().getCurrentLanguage().getLanguageCode(),
+				Minecraft.getMinecraft().getVersion(),
+				Minecraft.getMinecraft().getSession().getPlayerID(),
+				Minecraft.getMinecraft().getSession().getUsername()
+		);
 	}
 
 	@Mod.EventHandler
