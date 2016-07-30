@@ -4,15 +4,15 @@ RewiMod
 
 ![Logo](http://i.uploa.gq/39522.png)
 
-**Eine Minecraft Client erweiterung von Spielern für die Community**
+**Eine Minecraft Client Erweiterung von Spielern für die Community**
 
 Was ist die RewiMod?
 -------
-Da wir gemerkt haben, dass sich viele aus unserer Community, eine eigene Mod wünschen, es auch schon Projekte gab, die aber nicht wirklich funktioniert haben, haben wir uns gedacht, dass wir hiermit dem ganzen mal einen kleinen Anstoß geben. 
+Da wir gemerkt haben, dass sich viele aus unserer Community eine eigene Mod wünschen und es auch schon Projekte gab, die aber nicht wirklich funktioniert haben, haben wir uns gedacht, dass wir hiermit dem ganzen mal einen kleinen Anstoß geben. 
 
 Es ist geplant, dass diese Mod hauptsächlich von Usern entwickelt wird. Diese können sich so auch gleichzeitig im Programmieren beweisen und weiterbilden.
 
-Es können sowohl erfahrene als auch unerfahrenere User an dem Projekt teilnehmen um sich so den Umgang mit Java, Git, Gradle weiter anzueignen.
+Es können sowohl erfahrene als auch unerfahrenere User an dem Projekt teilnehmen um sich so den Umgang mit Java, Git und Gradle weiter anzueignen.
 
 Wie kann ich teilnehmen?
 -------
