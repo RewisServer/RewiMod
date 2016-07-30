@@ -18,6 +18,7 @@
  */
 package tv.rewinside.rewimod.forge;
 
+import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.multiplayer.GuiConnecting;
@@ -26,10 +27,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLFingerprintViolationEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import org.lwjgl.opengl.Display;
 import tv.rewinside.rewimod.core.RewiMod;
-import tv.rewinside.rewimod.core.handlers.IGlStateManagerHandler;
-import tv.rewinside.rewimod.core.handlers.IGuiHandler;
-import tv.rewinside.rewimod.core.handlers.ITextureHandler;
 import tv.rewinside.rewimod.forge.handlers.GlStateManagerHandler;
 import tv.rewinside.rewimod.forge.handlers.GuiHandler;
 import tv.rewinside.rewimod.forge.handlers.TextureHandler;
@@ -38,13 +37,18 @@ import tv.rewinside.rewimod.forge.listener.GuiListener;
 @Mod(modid = "%MOD_ID%", name = "%MOD_NAME%", version = "%MOD_VERSION%", canBeDeactivated = RewiMod.DEACTIVATEABLE, certificateFingerprint = RewiMod.FINGERPRINT)
 public class RewiForgeMod extends RewiMod {
 
-	private final TextureHandler textureHandler = new TextureHandler();
-	private final GuiHandler guiHandler = new GuiHandler();
-	private final GlStateManagerHandler glStateManagerHandler = new GlStateManagerHandler();
+	@Getter private final TextureHandler textureHandler = new TextureHandler();
+	@Getter private final GuiHandler guiHandler = new GuiHandler();
+	@Getter private final GlStateManagerHandler glStateManagerHandler = new GlStateManagerHandler();
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		super.initialize(Minecraft.getMinecraft().getLanguageManager().getCurrentLanguage().getLanguageCode(), Minecraft.getMinecraft().getVersion());
+		super.initialize(
+				Minecraft.getMinecraft().getLanguageManager().getCurrentLanguage().getLanguageCode(),
+				Minecraft.getMinecraft().getVersion(),
+				Minecraft.getMinecraft().getSession().getPlayerID(),
+				Minecraft.getMinecraft().getSession().getUsername()
+		);
 	}
 
 	@Mod.EventHandler
@@ -79,18 +83,8 @@ public class RewiForgeMod extends RewiMod {
 	}
 
 	@Override
-	public ITextureHandler getTextureHandler() {
-		return this.textureHandler;
-	}
-
-	@Override
-	public IGuiHandler getGuiHandler() {
-		return this.guiHandler;
-	}
-
-	@Override
-	public IGlStateManagerHandler getGlStateManagerHandler() {
-		return this.glStateManagerHandler;
+	public void setDisplayTitle(String displayTitle) {
+		Display.setTitle(displayTitle);
 	}
 
 }
