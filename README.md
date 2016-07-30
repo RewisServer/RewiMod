@@ -1,6 +1,7 @@
 
 RewiMod
 =======
+[![Bleeding Build Status](https://travis-ci.org/RewisServer/RewiMod.svg?branch=development)](https://travis-ci.org/RewisServer/RewiMod)
 
 ![Logo](http://i.uploa.gq/39522.png)
 
