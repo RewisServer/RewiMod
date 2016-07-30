@@ -1,7 +1,6 @@
 
 RewiMod
 =======
-[![Bleeding Build Status](https://travis-ci.org/RewisServer/RewiMod.svg?branch=development)](https://travis-ci.org/RewisServer/RewiMod)
 
 ![Logo](http://i.uploa.gq/39522.png)
 
@@ -31,3 +30,16 @@ RewiMod Discord Server
 -------
 
 [![Discord Einladung](https://discordapp.com/api/servers/205661485576224768/widget.png?style=banner3)](https://discord.gg/ZpAe9qn)
+
+Travis CI
+-------
+
+| master | development |
+|--------|-------------|
+| [![Build Status](https://travis-ci.org/RewisServer/RewiMod.svg?branch=master)](https://travis-ci.org/RewisServer/RewiMod) | [![Build Status](https://travis-ci.org/RewisServer/RewiMod.svg?branch=development)](https://travis-ci.org/RewisServer/RewiMod) |
+
+Links
+-------
+
+* [Thread im RewisServer Forum](https://rewinside.tv/Thread/57412)
+* [RewiMod CI](https://ci.rewimod.net)
