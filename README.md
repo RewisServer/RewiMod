@@ -20,11 +20,11 @@ Um an dem Projekt teilzunehmen, benötigst du einen Forenaccount bei [rewinside.
 
 Die Kommunikation zwischen den Devs findet in Discord statt. Dort wird es auch bald einen Bot geben, der euch über alle CI & Git Aktionen auf dem Laufenden hält.
 
-Alles weitere findet ihr in der [CONTRIBUTING.md](CONTRIBUTING.md)
+Alles weitere findet ihr in der [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Kontakt
 -------
-Die Projektleitung besteht aus ComputerBaer und Floppy012. Wir sind auf dem [rewinside.tv teamspeak](ts3server://ts.rewinside.tv) oder auf dem RewiMod-Discord Server zu finden.
+Die Projektleitung besteht aus ComputerBaer und Floppy012. Wir sind auf dem [rewinside.tv-TeamSpeak Server](ts3server://ts.rewinside.tv) oder auf dem RewiMod-Discord Server zu finden.
 
 RewiMod Discord Server
 -------
@@ -41,5 +41,5 @@ Travis CI
 Links
 -------
 
-* [Thread im RewisServer Forum](https://rewinside.tv/Thread/57412)
+* [Thread im rewinside.tv-Forum](https://rewinside.tv/Thread/57412)
 * [RewiMod CI](https://ci.rewimod.net)
