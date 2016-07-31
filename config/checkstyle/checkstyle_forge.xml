@@ -41,6 +41,8 @@
 		<module name="MethodParamPad"/>
 		<module name="ParenPad"/>
 		<module name="WhitespaceAfter"/>
+		<module name="WhitespaceAround"/>
+		<module name="SingleSpaceSeparator"/>
 
 		<!-- Check Blocks -->
 		<module name="AvoidNestedBlocks"/>
