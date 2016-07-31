@@ -6,7 +6,17 @@
 <module name="Checker">
 	
 	<!-- Check for new Line at EOF -->
-	<module name="NewlineAtEndOfFile"/>
+	<module name="NewlineAtEndOfFile">
+		<property name="lineSeparator" value="lf"/>
+	</module>
+	
+	<!--Check for trailing spaces -->
+	<module name="RegexpSingleline">
+       <property name="format" value="(^\s+$)|(\s+$)"/>
+       <property name="minimum" value="0"/>
+       <property name="maximum" value="0"/>
+       <property name="message" value="Line has trailing spaces."/>
+    </module>
 	
 	<module name="TreeWalker">
 		

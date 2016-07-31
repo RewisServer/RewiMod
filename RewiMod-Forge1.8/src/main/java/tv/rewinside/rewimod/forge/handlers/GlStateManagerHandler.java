@@ -22,10 +22,10 @@ import net.minecraft.client.renderer.GlStateManager;
 import tv.rewinside.rewimod.core.handlers.IGlStateManagerHandler;
 
 public class GlStateManagerHandler implements IGlStateManagerHandler {
-	
+
 	@Override
 	public void color(float r, float g, float b) {
 		GlStateManager.color(r, g, b);
 	}
-	
+
 }
