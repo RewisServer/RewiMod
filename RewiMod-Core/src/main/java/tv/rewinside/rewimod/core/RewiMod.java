@@ -21,6 +21,7 @@ package tv.rewinside.rewimod.core;
 import lombok.Getter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import tv.rewinside.rewimod.core.gui.ButtonFactory;
 import tv.rewinside.rewimod.core.handlers.IGlStateManagerHandler;
 import tv.rewinside.rewimod.core.handlers.IGuiHandler;
 import tv.rewinside.rewimod.core.handlers.ITextureHandler;
@@ -109,6 +110,13 @@ public abstract class RewiMod {
 	 * @return the version as String
 	 */
 	public abstract String getVersion();
+
+	/**
+	 * Gets the default ButtonFactory
+	 *
+	 * @return the default {@link tv.rewinside.rewimod.core.gui.ButtonFactory}
+	 */
+	public abstract ButtonFactory getDefaultButtonFactory();
 
 	/**
 	 * Sets the title of the LWJGL Minecraft window

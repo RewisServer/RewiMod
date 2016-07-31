@@ -36,21 +36,6 @@ public class GuiRewiConnectButton extends GuiButton implements IGuiButton {
 	}
 
 	@Override
-	public String getButtonTextures() {
-		return GuiButton.buttonTextures.getResourcePath();
-	}
-
-	@Override
-	public int getBGTextureX() {
-		return 0;
-	}
-
-	@Override
-	public int getBGTextureY() {
-		return 106;
-	}
-
-	@Override
 	public void onClick() {
 		CoreGuiActions.clickButtonRewiConnect();
 	}

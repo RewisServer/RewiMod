@@ -18,6 +18,7 @@
  */
 package tv.rewinside.rewimod.forge;
 
+import java.awt.Point;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
@@ -29,6 +30,7 @@ import net.minecraftforge.fml.common.event.FMLFingerprintViolationEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import org.lwjgl.opengl.Display;
 import tv.rewinside.rewimod.core.RewiMod;
+import tv.rewinside.rewimod.core.gui.ButtonFactory;
 import tv.rewinside.rewimod.forge.handlers.GlStateManagerHandler;
 import tv.rewinside.rewimod.forge.handlers.GuiHandler;
 import tv.rewinside.rewimod.forge.handlers.TextureHandler;
@@ -40,6 +42,7 @@ public class RewiForgeMod extends RewiMod {
 	@Getter private final TextureHandler textureHandler = new TextureHandler();
 	@Getter private final GuiHandler guiHandler = new GuiHandler();
 	@Getter private final GlStateManagerHandler glStateManagerHandler = new GlStateManagerHandler();
+	@Getter private final ButtonFactory defaultButtonFactory = new ButtonFactory("textures/gui/widgets.png", 200, 20, new Point(0, 46), new Point(0, 66), new Point(0, 86));
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {

@@ -23,27 +23,6 @@ import tv.rewinside.rewimod.core.gui.IGui;
 public interface IGuiButton extends IGui {
 
 	/**
-	 * Gets the default button textures
-	 *
-	 * @return the path to the default button textures
-	 */
-	public String getButtonTextures();
-
-	/**
-	 * Gets the X coordinate of the buttons background texture
-	 *
-	 * @return the <i>x</i> coordinate of the background texture
-	 */
-	public int getBGTextureX();
-
-	/**
-	 * Gets the Y coordinate of the buttons background texture
-	 *
-	 * @return the <i>y</i> coordinate of the background texture
-	 */
-	public int getBGTextureY();
-
-	/**
 	 * Called when the player clicked the button
 	 */
 	public void onClick();

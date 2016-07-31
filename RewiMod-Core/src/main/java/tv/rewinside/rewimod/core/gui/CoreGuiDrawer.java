@@ -49,13 +49,9 @@ public class CoreGuiDrawer {
 	public static void drawButtonRewiConnect(IGuiButton button, boolean visible, int xPos, int yPos, int mouseX, int mouseY, int width, int height) {
 		if (!visible) return;
 
-		getTextureHandler().bindTexture(button.getButtonTextures());
-		getGlStateManager().color(1.0F, 1.0F, 1.0F);
-
 		boolean isHovered = CoordinateUtil.inbetween(xPos, yPos, mouseX, mouseY, width, height);
-		int texturePosY = isHovered ? (button.getBGTextureY() + height) : button.getBGTextureY();
 
-		getGuiHandler().drawTexturedModalRect(button, xPos, yPos, button.getBGTextureX(), texturePosY, width, height);
+		RewiMod.getInstance().getDefaultButtonFactory().drawButton(button, xPos, yPos, width, isHovered ? ButtonFactory.ButtonState.HOVERED : ButtonFactory.ButtonState.ENABLED);
 
 		getTextureHandler().bindModTexture("textures/misc/rewiHead16.png");
 		getGlStateManager().color(1.0F, 1.0F, 1.0F);
