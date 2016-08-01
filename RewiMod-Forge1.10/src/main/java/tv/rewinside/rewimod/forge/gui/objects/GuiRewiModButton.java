@@ -37,7 +37,7 @@ public class GuiRewiModButton extends GuiButton implements IGuiButton {
 
 	@Override
 	public void onClick() {
-		CoreGuiActions.clickButtonRewiModHREF();
+		CoreGuiActions.clickButtonRewiModWebsite();
 	}
 
 }

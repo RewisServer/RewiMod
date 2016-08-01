@@ -39,8 +39,8 @@ public class CoreGuiActions {
 	/**
 	 * Opens the browser to the Official RewiMod Website
 	 */
-	public static void clickButtonRewiModHREF() {
-		RewiMod.getInstance().openURL("https://rewinside.tv/Thread/57412-Offiziell-RewiMod/");
+	public static void clickButtonRewiModWebsite() {
+		RewiMod.getInstance().openUrl("https://rewinside.tv/Thread/57412-Offiziell-RewiMod/");
 	}
 
 }

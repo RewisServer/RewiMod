@@ -21,7 +21,6 @@ package tv.rewinside.rewimod.core;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
-import java.util.logging.Level;
 import lombok.Getter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -100,14 +99,13 @@ public abstract class RewiMod {
 	 *
 	 * @param url The URL
 	 */
-	public void openURL(String url) {
+	public void openUrl(String url) {
 		Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
 		if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
 			try {
 				desktop.browse(URI.create(url));
 			} catch (IOException ex) {
-				RewiMod.LOGGER.error("Beim öffnen des Browsers ist ein Fehler aufgetreten!");
-				java.util.logging.Logger.getLogger(RewiMod.class.getName()).log(Level.SEVERE, null, ex);
+				RewiMod.LOGGER.error("An error occurred while opening an URL!", ex);
 			}
 		}
 	}
