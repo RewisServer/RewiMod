@@ -79,9 +79,9 @@ public class CoreGuiDrawer {
 		RewiMod.getInstance().getDefaultButtonFactory().drawButton(button, xPos, yPos, width, isHovered ? ButtonFactory.ButtonState.HOVERED : ButtonFactory.ButtonState.ENABLED);
 
 		getTextureHandler().bindModTexture("textures/misc/rewimodlogo.png");
-		getGlStateManager().color(1.0F, 1.0F, 1.0F);
+		getGlStateManager().color(isHovered ? .7F : 1.0F, 1.0F, 1.0F);
 
-		drawCustomSizeRect(xPos, yPos, 0, 0, 20, 20);
+		drawCustomSizeRect(xPos + 4, yPos + 4, 0, 0, 12, 12);
 	}
 
 	/**

@@ -3,3 +3,5 @@
 # # # # # # # # # # # # # # #
 
 startup.signedFail = !!! KEINE ORIGINALE AUSGABE DER REWIMOD !!!
+gui.confirmDisconnect = Verlassen bestätigen
+gui.chatlogHistory = Deine Reports

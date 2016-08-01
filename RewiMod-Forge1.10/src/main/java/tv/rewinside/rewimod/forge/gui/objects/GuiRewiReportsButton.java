@@ -20,31 +20,19 @@ package tv.rewinside.rewimod.forge.gui.objects;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
-import tv.rewinside.rewimod.core.gui.CoreGuiActions;
-import tv.rewinside.rewimod.core.gui.CoreGuiDrawer;
 import tv.rewinside.rewimod.core.gui.objects.IGuiButton;
-import tv.rewinside.rewimod.core.util.CoordinateUtil;
+import tv.rewinside.rewimod.forge.RewiForgeMod;
+import tv.rewinside.rewimod.forge.gui.GuiRewiReportScreen;
 
-import java.awt.Color;
+public class GuiRewiReportsButton extends GuiButton implements IGuiButton {
 
-public class GuiRewiModButton extends GuiButton implements IGuiButton {
+    public GuiRewiReportsButton(int buttonId, int x, int y) {
+        super(buttonId, x, y, 84, 20, RewiForgeMod.getInstance().getMessages().getMessage("gui.chatlogHistory"));
+    }
 
-	public GuiRewiModButton(int buttonID, int x, int y) {
-		super(buttonID, x, y, 20, 20, "");
-	}
-
-	@Override
-	public void drawButton(Minecraft mc, int mouseX, int mouseY) {
-		CoreGuiDrawer.drawButtonRewiMod(this, this.visible, this.xPosition, this.yPosition, mouseX, mouseY, this.width, this.height);
-
-		if (CoordinateUtil.inbetween(this.xPosition, this.yPosition, mouseX, mouseY, this.width, this.height)) {
-			this.drawCenteredString(mc.fontRendererObj, "Website", this.xPosition + 10, this.yPosition - 10, Color.WHITE.getRGB());
-		}
-	}
-
-	@Override
-	public void onClick(int mouseButton) {
-		CoreGuiActions.clickButtonRewiModWebsite();
-	}
+    @Override
+    public void onClick(int mouseButton) {
+        Minecraft.getMinecraft().displayGuiScreen(new GuiRewiReportScreen());
+    }
 
 }

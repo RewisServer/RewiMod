@@ -37,6 +37,13 @@ public class CoreGuiActions {
 	}
 
 	/**
+	 * Connects to the teamspeak server
+	 */
+	public static void clickButtonTeamspeakConnect() {
+		RewiMod.getInstance().openUrl("ts3server://rewinside.tv");
+	}
+
+	/**
 	 * Opens the browser to the Official RewiMod Website
 	 */
 	public static void clickButtonRewiModWebsite() {

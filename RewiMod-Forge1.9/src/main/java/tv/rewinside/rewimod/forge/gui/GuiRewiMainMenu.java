@@ -21,9 +21,11 @@ package tv.rewinside.rewimod.forge.gui;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiMainMenu;
 import tv.rewinside.rewimod.core.gui.objects.IGuiButton;
+import tv.rewinside.rewimod.core.util.CoordinateUtil;
 import tv.rewinside.rewimod.forge.gui.objects.GuiRewiConnectButton;
 import tv.rewinside.rewimod.forge.gui.objects.GuiRewiModButton;
 
@@ -38,18 +40,21 @@ public class GuiRewiMainMenu extends GuiMainMenu {
 
 		int lastId = super.buttonList.size();
 
-		super.buttonList.add(this.registerButton(new GuiRewiConnectButton(lastId++, this.width / 2 + 104, this.height / 4 + 132)));
-		super.buttonList.add(this.registerButton(new GuiRewiModButton(lastId++, this.width / 2 + 129, this.height / 4 + 132)));
+		super.buttonList.add(this.registerButton(new GuiRewiConnectButton(lastId++, this.width / 2 + 80, this.height / 4 + 72)));
+		super.buttonList.add(this.registerButton(new GuiRewiModButton(lastId++, this.width / 2 + 104, this.height / 4 + 132)));
+		super.buttonList.get(1).width = 177;
 	}
 
 	@Override
-	protected void actionPerformed(GuiButton btn) throws IOException {
-		super.actionPerformed(btn);
+	protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
+		super.mouseClicked(mouseX, mouseY, mouseButton);
 
-		IGuiButton button = this.buttons.get(btn.id);
+		for (Map.Entry entry : this.buttons.entrySet()) {
+			GuiButton guiButton = (GuiButton) entry.getValue();
 
-		if (button != null) {
-			button.onClick();
+			if (CoordinateUtil.inbetween(guiButton.xPosition, guiButton.yPosition, mouseX, mouseY, guiButton.width, guiButton.height)) {
+				((IGuiButton) guiButton).onClick(mouseButton);
+			}
 		}
 	}
 

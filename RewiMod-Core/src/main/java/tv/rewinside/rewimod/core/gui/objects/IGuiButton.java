@@ -24,7 +24,9 @@ public interface IGuiButton extends IGui {
 
 	/**
 	 * Called when the player clicked the button
+	 *
+	 * @param mouseButton the mouse button (0 = left 1 = right 2 = middle)
 	 */
-	public void onClick();
+	public void onClick(int mouseButton);
 
 }

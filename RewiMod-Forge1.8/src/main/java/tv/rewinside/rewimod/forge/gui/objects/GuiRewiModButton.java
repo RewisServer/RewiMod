@@ -23,6 +23,9 @@ import net.minecraft.client.gui.GuiButton;
 import tv.rewinside.rewimod.core.gui.CoreGuiActions;
 import tv.rewinside.rewimod.core.gui.CoreGuiDrawer;
 import tv.rewinside.rewimod.core.gui.objects.IGuiButton;
+import tv.rewinside.rewimod.core.util.CoordinateUtil;
+
+import java.awt.Color;
 
 public class GuiRewiModButton extends GuiButton implements IGuiButton {
 
@@ -33,10 +36,14 @@ public class GuiRewiModButton extends GuiButton implements IGuiButton {
 	@Override
 	public void drawButton(Minecraft mc, int mouseX, int mouseY) {
 		CoreGuiDrawer.drawButtonRewiMod(this, this.visible, this.xPosition, this.yPosition, mouseX, mouseY, this.width, this.height);
+
+		if (CoordinateUtil.inbetween(this.xPosition, this.yPosition, mouseX, mouseY, this.width, this.height)) {
+			this.drawCenteredString(mc.fontRendererObj, "Website", this.xPosition + 10, this.yPosition - 10, Color.WHITE.getRGB());
+		}
 	}
 
 	@Override
-	public void onClick() {
+	public void onClick(int mouseButton) {
 		CoreGuiActions.clickButtonRewiModWebsite();
 	}
 

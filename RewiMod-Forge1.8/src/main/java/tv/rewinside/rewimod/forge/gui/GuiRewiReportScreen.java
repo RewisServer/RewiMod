@@ -16,24 +16,31 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package tv.rewinside.rewimod.forge.listener;
+package tv.rewinside.rewimod.forge.gui;
 
-import net.minecraft.client.gui.GuiIngameMenu;
-import net.minecraft.client.gui.GuiMainMenu;
-import net.minecraftforge.client.event.GuiOpenEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import tv.rewinside.rewimod.forge.gui.GuiRewiIngameMenu;
-import tv.rewinside.rewimod.forge.gui.GuiRewiMainMenu;
+import net.minecraft.client.gui.GuiScreen;
+import tv.rewinside.rewimod.core.util.Chatlog;
+import tv.rewinside.rewimod.forge.RewiForgeMod;
 
-public class GuiListener {
+import java.awt.Color;
+import java.text.SimpleDateFormat;
 
-	@SubscribeEvent
-	public void onGuiOpen(GuiOpenEvent event) {
-		if (event.gui instanceof GuiMainMenu) {
-			event.gui = new GuiRewiMainMenu();
-		}
-		if (event.gui instanceof GuiIngameMenu) {
-			event.gui = new GuiRewiIngameMenu();
+public class GuiRewiReportScreen extends GuiScreen {
+
+	private SimpleDateFormat dateFormat = new SimpleDateFormat("[HH:mm]");
+
+	@Override
+	public void initGui() {
+		super.initGui();
+	}
+
+	@Override
+	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+		super.drawDefaultBackground();
+
+		int i = 0;
+		for (Chatlog chatlog : RewiForgeMod.getInstance().getChatlogs()) {
+			this.drawString(this.fontRendererObj, this.dateFormat.format(chatlog.getCreation()) + " - " + chatlog.getUser() + " - " + chatlog.getLink(), 12, 10 + 10 * i++, Color.ORANGE.getRGB());
 		}
 	}
 
