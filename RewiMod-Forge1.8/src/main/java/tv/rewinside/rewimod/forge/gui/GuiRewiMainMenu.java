@@ -25,6 +25,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiMainMenu;
 import tv.rewinside.rewimod.core.gui.objects.IGuiButton;
 import tv.rewinside.rewimod.forge.gui.objects.GuiRewiConnectButton;
+import tv.rewinside.rewimod.forge.gui.objects.GuiRewiModButton;
 
 public class GuiRewiMainMenu extends GuiMainMenu {
 
@@ -38,6 +39,7 @@ public class GuiRewiMainMenu extends GuiMainMenu {
 		int lastId = super.buttonList.size();
 
 		super.buttonList.add(this.registerButton(new GuiRewiConnectButton(lastId++, this.width / 2 + 104, this.height / 4 + 132)));
+		super.buttonList.add(this.registerButton(new GuiRewiModButton(lastId++, this.width / 2 + 129, this.height / 4 + 132)));
 	}
 
 	@Override

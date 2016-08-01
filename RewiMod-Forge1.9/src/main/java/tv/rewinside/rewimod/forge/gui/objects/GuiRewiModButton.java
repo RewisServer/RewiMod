@@ -16,31 +16,28 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package tv.rewinside.rewimod.core.gui;
+package tv.rewinside.rewimod.forge.gui.objects;
 
-import tv.rewinside.rewimod.core.RewiMod;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiButton;
+import tv.rewinside.rewimod.core.gui.CoreGuiActions;
+import tv.rewinside.rewimod.core.gui.CoreGuiDrawer;
+import tv.rewinside.rewimod.core.gui.objects.IGuiButton;
 
-public class CoreGuiActions {
+public class GuiRewiModButton extends GuiButton implements IGuiButton {
 
-	/**
-	 * @throws UnsupportedOperationException
-	 */
-	private CoreGuiActions() {
-		throw new UnsupportedOperationException("Cannot instantiate helper class!");
+	public GuiRewiModButton(int buttonID, int x, int y) {
+		super(buttonID, x, y, 20, 20, "");
 	}
 
-	/**
-	 * Connects the player to RewisServer
-	 */
-	public static void clickButtonRewiConnect() {
-		RewiMod.getInstance().connectToServer("mc.rewinside.tv", 25565);
+	@Override
+	public void drawButton(Minecraft mc, int mouseX, int mouseY) {
+		CoreGuiDrawer.drawButtonRewiMod(this, this.visible, this.xPosition, this.yPosition, mouseX, mouseY, this.width, this.height);
 	}
 
-	/**
-	 * Opens the browser to the Official RewiMod Website
-	 */
-	public static void clickButtonRewiModHREF() {
-		RewiMod.getInstance().openURL("https://rewinside.tv/Thread/57412-Offiziell-RewiMod/");
+	@Override
+	public void onClick() {
+		CoreGuiActions.clickButtonRewiModHREF();
 	}
 
 }
