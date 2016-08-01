@@ -60,6 +60,31 @@ public class CoreGuiDrawer {
 	}
 
 	/**
+	 * Draws a small button with the logo of the RewiMod on it
+	 *
+	 * @param button the representating button
+	 * @param visible wether the button is visible or not
+	 * @param xPos the <i>x</i> coordinate of the button
+	 * @param yPos the <i>y</i> coordinate of the button
+	 * @param mouseX the <i>x</i> coordinate of the cursor
+	 * @param mouseY the <i>y</i> coordinate of the cursor
+	 * @param width the <i>width</i> of the button
+	 * @param height the <i>height</i> of the button
+	 */
+	public static void drawButtonRewiMod(IGuiButton button, boolean visible, int xPos, int yPos, int mouseX, int mouseY, int width, int height) {
+		if (!visible) return;
+
+		boolean isHovered = CoordinateUtil.inbetween(xPos, yPos, mouseX, mouseY, width, height);
+
+		RewiMod.getInstance().getDefaultButtonFactory().drawButton(button, xPos, yPos, width, isHovered ? ButtonFactory.ButtonState.HOVERED : ButtonFactory.ButtonState.ENABLED);
+
+		getTextureHandler().bindModTexture("textures/misc/rewimodlogo.png");
+		getGlStateManager().color(1.0F, 1.0F, 1.0F);
+
+		drawCustomSizeRect(xPos, yPos, 0, 0, 20, 20);
+	}
+
+	/**
 	 * Shortcut method for getting the GlStateManagerHandler
 	 *
 	 * @return the representation of the GlStateManagerHandler
