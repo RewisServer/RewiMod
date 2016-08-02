@@ -23,6 +23,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import tv.rewinside.rewimod.core.RewiMod;
 
@@ -44,7 +45,7 @@ public class Messages {
 				url = this.getDefaultLanguageFile();
 			}
 
-			InputStreamReader reader = new InputStreamReader(url.openStream());
+			InputStreamReader reader = new InputStreamReader(url.openStream(), StandardCharsets.UTF_8);
 			this.parse(new BufferedReader(reader));
 		} catch (IOException ex) {
 			RewiMod.LOGGER.fatal("Error while loading Language File", ex);
