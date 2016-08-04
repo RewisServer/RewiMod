@@ -18,22 +18,28 @@
  */
 package tv.rewinside.rewimod.forge.listener;
 
-import net.minecraft.client.gui.GuiIngameMenu;
-import net.minecraft.client.gui.GuiMainMenu;
-import net.minecraftforge.client.event.GuiOpenEvent;
+import net.minecraft.client.Minecraft;
+import net.minecraft.util.IChatComponent;
+import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import tv.rewinside.rewimod.forge.gui.GuiRewiIngameMenu;
-import tv.rewinside.rewimod.forge.gui.GuiRewiMainMenu;
+import tv.rewinside.rewimod.core.util.Chatlog;
 
-public class GuiListener {
+import java.util.ArrayList;
+import java.util.List;
+
+public class ChatListener {
+
+	private final List<String> badWords = new ArrayList<>();
 
 	@SubscribeEvent
-	public void onGuiOpen(GuiOpenEvent event) {
-		if (event.gui instanceof GuiMainMenu) {
-			event.gui = new GuiRewiMainMenu();
-		}
-		if (event.gui instanceof GuiIngameMenu) {
-			event.gui = new GuiRewiIngameMenu();
+	public void onChatReceive(ClientChatReceivedEvent event) {
+		IChatComponent message = event.message;
+		String sender = !message.getUnformattedText().isEmpty() ? message.getSiblings().get(0).getUnformattedText().trim() : "";
+
+		if (Minecraft.getMinecraft().getCurrentServerData() == null) return;
+
+		if (Chatlog.shouldCreateChatlog(message.getUnformattedText(), Minecraft.getMinecraft().getSession().getUsername(), sender, Minecraft.getMinecraft().getCurrentServerData().serverIP, badWords)) {
+			Minecraft.getMinecraft().thePlayer.sendChatMessage("/chatlog " + sender);
 		}
 	}
 
