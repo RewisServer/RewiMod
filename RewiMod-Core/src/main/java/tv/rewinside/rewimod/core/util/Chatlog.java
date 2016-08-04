@@ -19,8 +19,8 @@
 package tv.rewinside.rewimod.core.util;
 
 import java.util.Date;
-import java.util.List;
 import lombok.Getter;
+import tv.rewinside.rewimod.core.RewiMod;
 
 @Getter
 public class Chatlog {
@@ -49,15 +49,14 @@ public class Chatlog {
 	 * @param user the mod user
 	 * @param sender the message sender
 	 * @param serverIp the server ip
-	 * @param badWords the blacklisted words
 	 * @return if a chatlog should be created
 	 */
-	public static boolean shouldCreateChatlog(String message, String user, String sender, String serverIp, List<String> badWords) {
+	public static boolean shouldCreateChatlog(String message, String user, String sender, String serverIp) {
 		if (user.equals(sender) || !serverIp.contains("rewinside.tv")) {
 			return false;
 		}
 
-		for (String badWord : badWords) {
+		for (String badWord : RewiMod.getInstance().getBlacklistedWords()) {
 			if (message.contains(badWord)) {
 				return true;
 			}

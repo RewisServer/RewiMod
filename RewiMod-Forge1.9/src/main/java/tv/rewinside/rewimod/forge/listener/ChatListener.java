@@ -18,8 +18,6 @@
  */
 package tv.rewinside.rewimod.forge.listener;
 
-import java.util.ArrayList;
-import java.util.List;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
@@ -28,8 +26,6 @@ import tv.rewinside.rewimod.core.util.Chatlog;
 
 public class ChatListener {
 
-	private final List<String> badWords = new ArrayList<>();
-
 	@SubscribeEvent
 	public void onChatReceive(ClientChatReceivedEvent event) {
 		ITextComponent message = event.getMessage();
@@ -37,7 +33,7 @@ public class ChatListener {
 
 		if (Minecraft.getMinecraft().getCurrentServerData() == null) return;
 
-		if (Chatlog.shouldCreateChatlog(message.getUnformattedText(), Minecraft.getMinecraft().getSession().getUsername(), sender, Minecraft.getMinecraft().getCurrentServerData().serverIP, badWords)) {
+		if (Chatlog.shouldCreateChatlog(message.getUnformattedText(), Minecraft.getMinecraft().getSession().getUsername(), sender, Minecraft.getMinecraft().getCurrentServerData().serverIP)) {
 			Minecraft.getMinecraft().thePlayer.sendChatMessage("/chatlog " + sender);
 		}
 	}
