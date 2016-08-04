@@ -18,17 +18,16 @@
  */
 package tv.rewinside.rewimod.core.util;
 
-import lombok.Getter;
-
 import java.util.Date;
 import java.util.List;
+import lombok.Getter;
 
 @Getter
 public class Chatlog {
 
-	private String link;
-	private String user;
-	private Date creation;
+	private final String link;
+	private final String user;
+	private final Date creation;
 
 	/**
 	 * Constructs a new chatlog with all required information
@@ -54,11 +53,13 @@ public class Chatlog {
 	 * @return if a chatlog should be created
 	 */
 	public static boolean shouldCreateChatlog(String message, String user, String sender, String serverIp, List<String> badWords) {
-		if (!user.equals(sender) && serverIp.contains("rewinside.tv")) {
-			for (String badWord : badWords) {
-				if (message.contains(badWord)) {
-					return true;
-				}
+		if (user.equals(sender) || !serverIp.contains("rewinside.tv")) {
+			return false;
+		}
+
+		for (String badWord : badWords) {
+			if (message.contains(badWord)) {
+				return true;
 			}
 		}
 

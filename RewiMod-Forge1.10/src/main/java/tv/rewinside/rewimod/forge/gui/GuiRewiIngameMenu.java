@@ -18,48 +18,47 @@
  */
 package tv.rewinside.rewimod.forge.gui;
 
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiIngameMenu;
 import tv.rewinside.rewimod.core.gui.objects.IGuiButton;
 import tv.rewinside.rewimod.core.util.CoordinateUtil;
 import tv.rewinside.rewimod.forge.gui.objects.GuiRewiReportsButton;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
 public class GuiRewiIngameMenu extends GuiIngameMenu {
 
-    private final Map<Integer, IGuiButton> buttons = new HashMap<>();
+	private final Map<Integer, IGuiButton> buttons = new HashMap<>();
 
-    @Override
-    public void initGui() {
-        this.buttons.clear();
-        super.initGui();
+	@Override
+	public void initGui() {
+		this.buttons.clear();
+		super.initGui();
 
-        int lastId = super.buttonList.size();
+		int lastId = super.buttonList.size();
 
-        super.buttonList.add(this.registerButton(new GuiRewiReportsButton(lastId + 2, this.width / 2 + 104, this.height / 4 + 56)));
-    }
+		super.buttonList.add(this.registerButton(new GuiRewiReportsButton(lastId + 2, this.width / 2 + 104, this.height / 4 + 56)));
+	}
 
-    @Override
-    protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
-        super.mouseClicked(mouseX, mouseY, mouseButton);
+	@Override
+	protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
+		super.mouseClicked(mouseX, mouseY, mouseButton);
 
-        for (Map.Entry entry : this.buttons.entrySet()) {
-            GuiButton guiButton = (GuiButton) entry.getValue();
+		for (Map.Entry entry : this.buttons.entrySet()) {
+			GuiButton guiButton = (GuiButton) entry.getValue();
 
-            if (CoordinateUtil.inbetween(guiButton.xPosition, guiButton.yPosition, mouseX, mouseY, guiButton.width, guiButton.height)) {
-                ((IGuiButton) guiButton).onClick(mouseButton);
-            }
-        }
-    }
+			if (CoordinateUtil.inbetween(guiButton.xPosition, guiButton.yPosition, mouseX, mouseY, guiButton.width, guiButton.height)) {
+				((IGuiButton) guiButton).onClick(mouseButton);
+			}
+		}
+	}
 
-    private GuiButton registerButton(IGuiButton button) {
-        GuiButton btn = (GuiButton) button;
-        this.buttons.put(btn.id, button);
+	private GuiButton registerButton(IGuiButton button) {
+		GuiButton btn = (GuiButton) button;
+		this.buttons.put(btn.id, button);
 
-        return btn;
-    }
+		return btn;
+	}
 
 }

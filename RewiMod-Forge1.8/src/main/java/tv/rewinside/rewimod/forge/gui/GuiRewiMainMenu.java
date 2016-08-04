@@ -21,7 +21,6 @@ package tv.rewinside.rewimod.forge.gui;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiMainMenu;
 import tv.rewinside.rewimod.core.gui.objects.IGuiButton;
@@ -47,7 +46,7 @@ public class GuiRewiMainMenu extends GuiMainMenu {
 
 	@Override
 	protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
-	    super.mouseClicked(mouseX, mouseY, mouseButton);
+		super.mouseClicked(mouseX, mouseY, mouseButton);
 
 		for (Map.Entry entry : this.buttons.entrySet()) {
 			GuiButton guiButton = (GuiButton) entry.getValue();

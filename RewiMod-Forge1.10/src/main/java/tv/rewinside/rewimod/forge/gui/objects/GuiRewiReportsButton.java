@@ -26,13 +26,13 @@ import tv.rewinside.rewimod.forge.gui.GuiRewiReportScreen;
 
 public class GuiRewiReportsButton extends GuiButton implements IGuiButton {
 
-    public GuiRewiReportsButton(int buttonId, int x, int y) {
-        super(buttonId, x, y, 84, 20, RewiForgeMod.getInstance().getMessages().getMessage("gui.chatlogHistory"));
-    }
+	public GuiRewiReportsButton(int buttonId, int x, int y) {
+		super(buttonId, x, y, 84, 20, RewiForgeMod.getInstance().getMessages().getMessage("gui.chatlogHistory"));
+	}
 
-    @Override
-    public void onClick(int mouseButton) {
-        Minecraft.getMinecraft().displayGuiScreen(new GuiRewiReportScreen());
-    }
+	@Override
+	public void onClick(int mouseButton) {
+		Minecraft.getMinecraft().displayGuiScreen(new GuiRewiReportScreen());
+	}
 
 }

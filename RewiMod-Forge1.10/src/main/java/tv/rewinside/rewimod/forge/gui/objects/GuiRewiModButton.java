@@ -24,7 +24,6 @@ import tv.rewinside.rewimod.core.gui.CoreGuiActions;
 import tv.rewinside.rewimod.core.gui.CoreGuiDrawer;
 import tv.rewinside.rewimod.core.gui.objects.IGuiButton;
 import tv.rewinside.rewimod.core.util.CoordinateUtil;
-
 import java.awt.Color;
 
 public class GuiRewiModButton extends GuiButton implements IGuiButton {

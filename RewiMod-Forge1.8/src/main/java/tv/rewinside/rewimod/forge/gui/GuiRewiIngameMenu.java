@@ -18,15 +18,14 @@
  */
 package tv.rewinside.rewimod.forge.gui;
 
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiIngameMenu;
 import tv.rewinside.rewimod.core.gui.objects.IGuiButton;
 import tv.rewinside.rewimod.core.util.CoordinateUtil;
 import tv.rewinside.rewimod.forge.gui.objects.GuiRewiReportsButton;
-
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 public class GuiRewiIngameMenu extends GuiIngameMenu {
 

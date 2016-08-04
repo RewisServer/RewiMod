@@ -27,7 +27,8 @@ public enum RewiButtonConnectType {
 	TEAMSPEAK("Teamspeak");
 
 	@Getter @Setter private static RewiButtonConnectType currentType = MINECRAFT;
-	@Getter private String name;
+
+	@Getter private final String name;
 
 	/**
 	 * Constructer of the RewiButtonConnect class

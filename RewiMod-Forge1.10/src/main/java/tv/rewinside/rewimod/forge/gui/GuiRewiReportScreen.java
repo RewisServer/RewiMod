@@ -27,7 +27,7 @@ import java.text.SimpleDateFormat;
 
 public class GuiRewiReportScreen extends GuiScreen {
 
-	private SimpleDateFormat dateFormat = new SimpleDateFormat("[HH:mm]");
+	private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("[HH:mm]");
 
 	@Override
 	public void initGui() {
@@ -40,7 +40,7 @@ public class GuiRewiReportScreen extends GuiScreen {
 
 		int i = 0;
 		for (Chatlog chatlog : RewiForgeMod.getInstance().getChatlogs()) {
-			this.drawString(this.fontRendererObj, this.dateFormat.format(chatlog.getCreation()) + " - " + chatlog.getUser() + " - " + chatlog.getLink(), 12, 10 + 10 * i++, Color.ORANGE.getRGB());
+			this.drawString(this.fontRendererObj, DATE_FORMAT.format(chatlog.getCreation()) + " - " + chatlog.getUser() + " - " + chatlog.getLink(), 12, 10 + 10 * i++, Color.ORANGE.getRGB());
 		}
 	}
 
