@@ -23,6 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiIngameMenu;
+import tv.rewinside.rewimod.core.RewiMod;
 import tv.rewinside.rewimod.core.gui.objects.IGuiButton;
 import tv.rewinside.rewimod.core.util.CoordinateUtil;
 import tv.rewinside.rewimod.forge.gui.objects.GuiRewiReportsButton;
@@ -52,6 +53,19 @@ public class GuiRewiIngameMenu extends GuiIngameMenu {
 				((IGuiButton) guiButton).onClick(mouseButton);
 			}
 		}
+	}
+
+	@Override
+	protected void actionPerformed(GuiButton button) throws IOException {
+		String confirmMessage = RewiMod.getInstance().getMessages().getMessage("gui.confirmDisconnect");
+
+		if (button.id == 1 && !button.displayString.equals(confirmMessage)) {
+			button.displayString = confirmMessage;
+			button.packedFGColour = RewiMod.getInstance().getConfirmDisconnectButtonColor();
+			return;
+		}
+
+		super.actionPerformed(button);
 	}
 
 	private GuiButton registerButton(IGuiButton button) {

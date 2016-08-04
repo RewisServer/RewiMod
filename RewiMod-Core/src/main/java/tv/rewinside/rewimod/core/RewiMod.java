@@ -18,6 +18,7 @@
  */
 package tv.rewinside.rewimod.core;
 
+import java.awt.Color;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
@@ -42,6 +43,8 @@ public abstract class RewiMod {
 	@Getter private static RewiMod instance;
 
 	@Getter private final Messages messages = new Messages();
+
+	@Getter private final int confirmDisconnectButtonColor = new Color(252, 53, 57).getRGB();
 
 	@Getter private String uuid;
 	@Getter private String username;
