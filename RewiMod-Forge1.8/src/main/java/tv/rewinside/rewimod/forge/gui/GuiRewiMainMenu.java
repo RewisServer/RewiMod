@@ -40,7 +40,7 @@ public class GuiRewiMainMenu extends GuiMainMenu {
 		this.buttons.clear();
 		super.initGui();
 
-		int lastId = super.buttonList.size();
+		int lastId = super.buttonList.size() + 100;
 
 		super.buttonList.add(this.registerButton(new GuiRewiConnectButton(RewiButtonConnectType.MINECRAFT, lastId++, this.width / 2 + 80, this.height / 4 + 72)));
 		super.buttonList.add(this.registerButton(new GuiRewiConnectButton(RewiButtonConnectType.TEAMSPEAK, lastId++, this.width / 2 - 100, this.height / 4 + 72)));
