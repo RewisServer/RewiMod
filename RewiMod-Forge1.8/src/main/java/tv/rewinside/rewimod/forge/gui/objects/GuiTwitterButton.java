@@ -27,24 +27,24 @@ import tv.rewinside.rewimod.core.util.CoordinateUtil;
 
 import java.awt.*;
 
-public class GuiRewiModButton extends GuiButton implements IGuiButton {
+public class GuiTwitterButton extends GuiButton implements IGuiButton {
 
-	public GuiRewiModButton(int buttonID, int x, int y) {
+	public GuiTwitterButton(int buttonID, int x, int y) {
 		super(buttonID, x, y, 20, 20, "");
 	}
 
 	@Override
 	public void drawButton(Minecraft mc, int mouseX, int mouseY) {
-		CoreGuiDrawer.drawButtonRewiMod(this, this.visible, this.xPosition, this.yPosition, mouseX, mouseY, this.width, this.height);
+		CoreGuiDrawer.drawButtonTwitter(this, this.visible, this.xPosition, this.yPosition, mouseX, mouseY, this.width, this.height);
 
-		if (CoordinateUtil.inbetween(this.xPosition, this.yPosition, mouseX, mouseY, this.width, this.height)) {
-			this.drawString(mc.fontRendererObj, "Website", this.xPosition + 24, this.yPosition + 6, Color.WHITE.getRGB());
+		if (CoordinateUtil.inbetween(xPosition, yPosition, mouseX, mouseY, width, height)) {
+			this.drawString(mc.fontRendererObj, "Rewi's Twitter", this.xPosition + 24, this.yPosition + 6, Color.WHITE.getRGB());
 		}
 	}
 
 	@Override
 	public void onClick(int mouseButton) {
-		CoreGuiActions.clickButtonRewiModWebsite();
+		CoreGuiActions.clickButtonTwitter();
 	}
 
 }

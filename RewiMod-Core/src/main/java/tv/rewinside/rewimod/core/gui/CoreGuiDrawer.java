@@ -36,6 +36,56 @@ public class CoreGuiDrawer {
 	}
 
 	/**
+	 * Draws a small button with the youtube logo on it
+	 *
+	 * @param button the representating button
+	 * @param visible wether the button is visible or not
+	 * @param xPos the <i>x</i> coordinate of the button
+	 * @param yPos the <i>y</i> coordinate of the button
+	 * @param mouseX the <i>x</i> coordinate of the cursor
+	 * @param mouseY the <i>y</i> coordinate of the cursor
+	 * @param width the <i>width</i> of the button
+	 * @param height the <i>height</i> of the button
+	 */
+	public static void drawButtonYoutube(IGuiButton button, boolean visible, int xPos, int yPos, int mouseX, int mouseY, int width, int height) {
+		if (!visible) return;
+
+		boolean isHovered = CoordinateUtil.inbetween(xPos, yPos, mouseX, mouseY, width, height);
+
+		RewiMod.getInstance().getDefaultButtonFactory().drawButton(button, xPos, yPos, width, isHovered ? ButtonFactory.ButtonState.HOVERED : ButtonFactory.ButtonState.ENABLED);
+
+		getTextureHandler().bindModTexture("textures/misc/youtubeIcon32.png");
+		getGlStateManager().color(1.0F, 1.0F, 1.0F);
+
+		drawCustomSizeRect(xPos + 3, yPos + 3, 0, 0, 14, 14);
+	}
+
+	/**
+	 * Draws a small button with the twitter logo on it
+	 *
+	 * @param button the representating button
+	 * @param visible wether the button is visible or not
+	 * @param xPos the <i>x</i> coordinate of the button
+	 * @param yPos the <i>y</i> coordinate of the button
+	 * @param mouseX the <i>x</i> coordinate of the cursor
+	 * @param mouseY the <i>y</i> coordinate of the cursor
+	 * @param width the <i>width</i> of the button
+	 * @param height the <i>height</i> of the button
+	 */
+	public static void drawButtonTwitter(IGuiButton button, boolean visible, int xPos, int yPos, int mouseX, int mouseY, int width, int height) {
+		if (!visible) return;
+
+		boolean isHovered = CoordinateUtil.inbetween(xPos, yPos, mouseX, mouseY, width, height);
+
+		RewiMod.getInstance().getDefaultButtonFactory().drawButton(button, xPos, yPos, width, isHovered ? ButtonFactory.ButtonState.HOVERED : ButtonFactory.ButtonState.ENABLED);
+
+		getTextureHandler().bindModTexture("textures/misc/twitterIcon32.png");
+		getGlStateManager().color(1.0F, 1.0F, 1.0F);
+
+		drawCustomSizeRect(xPos + 3, yPos + 3, 0, 0, 14, 14);
+	}
+
+	/**
 	 * Draws a small button with the skin face of rewinside on it
 	 *
 	 * @param connectType the connect type
