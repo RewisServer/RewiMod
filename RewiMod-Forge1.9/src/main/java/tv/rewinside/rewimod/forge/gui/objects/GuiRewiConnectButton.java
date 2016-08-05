@@ -18,12 +18,10 @@
  */
 package tv.rewinside.rewimod.forge.gui.objects;
 
-import java.awt.Color;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import tv.rewinside.rewimod.core.gui.CoreGuiDrawer;
 import tv.rewinside.rewimod.core.gui.objects.IGuiButton;
-import tv.rewinside.rewimod.core.util.CoordinateUtil;
 import tv.rewinside.rewimod.core.util.RewiButtonConnectType;
 
 public class GuiRewiConnectButton extends GuiButton implements IGuiButton {

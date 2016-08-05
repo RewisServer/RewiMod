@@ -22,10 +22,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import tv.rewinside.rewimod.core.gui.CoreGuiDrawer;
 import tv.rewinside.rewimod.core.gui.objects.IGuiButton;
-import tv.rewinside.rewimod.core.util.CoordinateUtil;
 import tv.rewinside.rewimod.core.util.RewiButtonConnectType;
-
-import java.awt.Color;
 
 public class GuiRewiConnectButton extends GuiButton implements IGuiButton {
 

@@ -19,7 +19,6 @@
 package tv.rewinside.rewimod.core.util;
 
 import lombok.Getter;
-import lombok.Setter;
 import tv.rewinside.rewimod.core.gui.CoreGuiActions;
 
 public enum RewiButtonConnectType {
@@ -37,10 +36,13 @@ public enum RewiButtonConnectType {
 		this.name = name;
 	}
 
+	/**
+	 * Determines what to do if a button was clicked
+	 */
 	public void click() {
 		if (this == MINECRAFT) {
 			CoreGuiActions.clickButtonRewiConnect();
-		} else {
+		} else if (this == TEAMSPEAK) {
 			CoreGuiActions.clickButtonTeamspeakConnect();
 		}
 	}

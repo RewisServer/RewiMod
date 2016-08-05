@@ -38,6 +38,7 @@ public class CoreGuiDrawer {
 	/**
 	 * Draws a small button with the skin face of rewinside on it
 	 *
+	 * @param connectType the connect type
 	 * @param button the representating button
 	 * @param visible wether the button is visible or not
 	 * @param xPos the <i>x</i> coordinate of the button
