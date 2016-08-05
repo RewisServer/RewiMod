@@ -37,7 +37,7 @@ public class GuiRewiModButton extends GuiButton implements IGuiButton {
 		CoreGuiDrawer.drawButtonRewiMod(this, this.visible, this.xPosition, this.yPosition, mouseX, mouseY, this.width, this.height);
 
 		if (CoordinateUtil.inbetween(this.xPosition, this.yPosition, mouseX, mouseY, this.width, this.height)) {
-			this.drawCenteredString(mc.fontRendererObj, "Website", this.xPosition + 10, this.yPosition - 10, Color.WHITE.getRGB());
+			this.drawString(mc.fontRendererObj, "Website", this.xPosition + 24, this.yPosition + 6, Color.WHITE.getRGB());
 		}
 	}
 

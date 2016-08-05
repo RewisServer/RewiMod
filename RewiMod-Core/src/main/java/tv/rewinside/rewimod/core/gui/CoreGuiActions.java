@@ -50,4 +50,17 @@ public class CoreGuiActions {
 		RewiMod.getInstance().openUrl("https://rewinside.tv/Thread/57412-Offiziell-RewiMod/");
 	}
 
+	/**
+	 * Opens the browser to rewinside's twitter timeline
+	 */
+	public static void clickButtonTwitter() {
+		RewiMod.getInstance().openUrl("https://www.twitter.com/rewinside/");
+	}
+
+	/**
+	 * Opens a web browser to rewinside's youtube channel
+	 */
+	public static void clickButtonYoutube() {
+		RewiMod.getInstance().openUrl("https://www.youtube.com/user/rewinside/");
+	}
 }
