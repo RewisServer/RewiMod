@@ -51,10 +51,10 @@ public class CoreGuiActions {
 	}
 
 	/**
-	 * Opens the browser to rewinside's twitter timeline
+	 * Opens the browser to the Official RewiMod twitter timeline
 	 */
 	public static void clickButtonTwitter() {
-		RewiMod.getInstance().openUrl("https://www.twitter.com/rewinside/");
+		RewiMod.getInstance().openUrl("https://twitter.com/RewiMod");
 	}
 
 	/**
