@@ -29,23 +29,22 @@ import java.awt.Color;
 
 public class GuiRewiConnectButton extends GuiButton implements IGuiButton {
 
-	public GuiRewiConnectButton(int buttonID, int x, int y) {
+	private final RewiButtonConnectType connectType;
+
+	public GuiRewiConnectButton(RewiButtonConnectType connectType, int buttonID, int x, int y) {
 		super(buttonID, x, y, 20, 20, "");
+
+		this.connectType = connectType;
 	}
 
 	@Override
 	public void drawButton(Minecraft mc, int mouseX, int mouseY) {
-		CoreGuiDrawer.drawButtonRewiConnect(this, this.visible, this.xPosition, this.yPosition, mouseX, mouseY, this.width, this.height);
-
-		if (CoordinateUtil.inbetween(xPosition, yPosition, mouseX, mouseY, width, height)) {
-			this.drawString(mc.fontRendererObj, RewiButtonConnectType.getCurrentType().getName(),
-					this.xPosition + 22, this.yPosition + 5, Color.WHITE.getRGB());
-		}
+		CoreGuiDrawer.drawButtonRewiConnect(connectType, this, this.visible, this.xPosition, this.yPosition, mouseX, mouseY, this.width, this.height);
 	}
 
 	@Override
 	public void onClick(int mouseButton) {
-		RewiButtonConnectType.handleInput(mouseButton);
+		connectType.click();
 	}
 
 }

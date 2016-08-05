@@ -24,6 +24,7 @@ import tv.rewinside.rewimod.core.handlers.IGlStateManagerHandler;
 import tv.rewinside.rewimod.core.handlers.IGuiHandler;
 import tv.rewinside.rewimod.core.handlers.ITextureHandler;
 import tv.rewinside.rewimod.core.util.CoordinateUtil;
+import tv.rewinside.rewimod.core.util.RewiButtonConnectType;
 
 public class CoreGuiDrawer {
 
@@ -46,14 +47,14 @@ public class CoreGuiDrawer {
 	 * @param width the <i>width</i> of the button
 	 * @param height the <i>height</i> of the button
 	 */
-	public static void drawButtonRewiConnect(IGuiButton button, boolean visible, int xPos, int yPos, int mouseX, int mouseY, int width, int height) {
+	public static void drawButtonRewiConnect(RewiButtonConnectType connectType, IGuiButton button, boolean visible, int xPos, int yPos, int mouseX, int mouseY, int width, int height) {
 		if (!visible) return;
 
 		boolean isHovered = CoordinateUtil.inbetween(xPos, yPos, mouseX, mouseY, width, height);
 
 		RewiMod.getInstance().getDefaultButtonFactory().drawButton(button, xPos, yPos, width, isHovered ? ButtonFactory.ButtonState.HOVERED : ButtonFactory.ButtonState.ENABLED);
 
-		getTextureHandler().bindModTexture("textures/misc/rewiHead16.png");
+		getTextureHandler().bindModTexture("textures/misc/" + (connectType == RewiButtonConnectType.MINECRAFT ? "rewiHead16" : "teamspeak") + ".png");
 		getGlStateManager().color(1.0F, 1.0F, 1.0F);
 
 		drawCustomSizeRect(xPos + 3, yPos + 3, 0, 0, 14, 14);

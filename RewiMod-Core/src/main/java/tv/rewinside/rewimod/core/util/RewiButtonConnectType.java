@@ -26,8 +26,6 @@ public enum RewiButtonConnectType {
 	MINECRAFT("Minecraft"),
 	TEAMSPEAK("Teamspeak");
 
-	@Getter @Setter private static RewiButtonConnectType currentType = MINECRAFT;
-
 	@Getter private final String name;
 
 	/**
@@ -39,36 +37,11 @@ public enum RewiButtonConnectType {
 		this.name = name;
 	}
 
-	/**
-	 * Switches the connect type which is used for determining whether the client should connect to the minecraft or teamspeak server
-	 *
-	 * @return the new ConnectType
-	 */
-	public static RewiButtonConnectType switchType() {
-		currentType = currentType == MINECRAFT ? TEAMSPEAK : MINECRAFT;
-
-		return currentType;
-	}
-
-	/**
-	 * Determines what to do if a defined button has been pressed
-	 *
-	 * @param mouseButton the mouse button which defines which mouse button has been clicked
-	 */
-	public static void handleInput(int mouseButton) {
-		if (mouseButton == 0) {
-			switch (getCurrentType()) {
-				case MINECRAFT:
-					CoreGuiActions.clickButtonRewiConnect();
-					break;
-				case TEAMSPEAK:
-					CoreGuiActions.clickButtonTeamspeakConnect();
-					break;
-				default:
-					break;
-			}
-		} else if (mouseButton == 1) {
-			switchType();
+	public void click() {
+		if (this == MINECRAFT) {
+			CoreGuiActions.clickButtonRewiConnect();
+		} else {
+			CoreGuiActions.clickButtonTeamspeakConnect();
 		}
 	}
 
