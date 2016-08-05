@@ -39,6 +39,8 @@ public class GuiRewiIngameMenu extends GuiIngameMenu {
 
 		int lastId = super.buttonList.size();
 
+		lastId += 100; //Mojang Nailed it
+
 		super.buttonList.add(this.registerButton(new GuiRewiReportsButton(lastId + 2, this.width / 2 + 104, this.height / 4 + 56)));
 	}
 
