@@ -33,7 +33,7 @@ public class CoreGuiActions {
 	 * Connects the player to RewisServer
 	 */
 	public static void clickButtonRewiConnect() {
-		RewiMod.getInstance().connectToServer("mc.rewinside.tv", 25565);
+		RewiMod.getInstance().connectToServer("Rewinside.TV", "mc.rewinside.tv", 25565, false);
 	}
 
 	/**
