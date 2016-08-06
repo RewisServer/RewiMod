@@ -18,39 +18,19 @@
  */
 package tv.rewinside.rewimod.forge.handlers;
 
-import net.minecraft.client.renderer.GlStateManager;
-import tv.rewinside.rewimod.core.handlers.IGlStateManagerHandler;
+import net.minecraft.client.Minecraft;
+import tv.rewinside.rewimod.core.handlers.IFontRendererObjHandler;
 
-public class GlStateManagerHandler implements IGlStateManagerHandler {
+public class FontRendererObjHandler implements IFontRendererObjHandler {
 
 	@Override
-	public void color(float r, float g, float b) {
-		GlStateManager.color(r, g, b);
+	public void drawString(String text, int x, int y, int color) {
+		Minecraft.getMinecraft().fontRendererObj.drawString(text, x, y, color);
 	}
 
 	@Override
-	public void pushMatrix() {
-		GlStateManager.pushMatrix();
-	}
-
-	@Override
-	public void popMatrix() {
-		GlStateManager.popMatrix();
-	}
-
-	@Override
-	public void enableBlend() {
-		GlStateManager.enableBlend();
-	}
-
-	@Override
-	public void disableBlend() {
-		GlStateManager.disableBlend();
-	}
-
-	@Override
-	public void disableAlpha() {
-		GlStateManager.disableAlpha();
+	public void drawStringWithShadow(String text, int x, int y, int color) {
+		Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(text, x, y, color);
 	}
 
 }

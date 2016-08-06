@@ -28,9 +28,7 @@ import lombok.Getter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import tv.rewinside.rewimod.core.gui.ButtonFactory;
-import tv.rewinside.rewimod.core.handlers.IGlStateManagerHandler;
-import tv.rewinside.rewimod.core.handlers.IGuiHandler;
-import tv.rewinside.rewimod.core.handlers.ITextureHandler;
+import tv.rewinside.rewimod.core.handlers.*;
 import tv.rewinside.rewimod.core.util.Chatlog;
 import tv.rewinside.rewimod.core.util.Messages;
 
@@ -153,6 +151,13 @@ public abstract class RewiMod {
 	 * @param displayTitle the title as String
 	 */
 	public abstract void setDisplayTitle(String displayTitle);
+
+	/**
+	 * Gets the font render obj
+	 *
+	 * @return an implementation of {@link IFontRendererObjHandler}
+	 */
+	public abstract IFontRendererObjHandler getFontRendererObjHandler();
 
 	/**
 	 * Gets the handler for handling textures
