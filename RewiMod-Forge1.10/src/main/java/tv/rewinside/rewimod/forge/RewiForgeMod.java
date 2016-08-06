@@ -19,11 +19,13 @@
 package tv.rewinside.rewimod.forge;
 
 import java.awt.Point;
+import java.net.UnknownHostException;
 import lombok.Getter;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.multiplayer.GuiConnecting;
+import net.minecraft.client.multiplayer.ServerData;
+import net.minecraft.client.network.ServerPinger;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.client.FMLClientHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.event.FMLFingerprintViolationEvent;
@@ -44,6 +46,8 @@ public class RewiForgeMod extends RewiMod {
 	@Getter private final GuiHandler guiHandler = new GuiHandler();
 	@Getter private final GlStateManagerHandler glStateManagerHandler = new GlStateManagerHandler();
 	@Getter private final ButtonFactory defaultButtonFactory = new ButtonFactory("textures/gui/widgets.png", 200, 20, new Point(0, 46), new Point(0, 66), new Point(0, 86));
+
+	@Getter private final ServerPinger pinger = new ServerPinger();
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
@@ -67,9 +71,18 @@ public class RewiForgeMod extends RewiMod {
 	}
 
 	@Override
-	public void connectToServer(String host, int port) {
-		GuiScreen parent = Minecraft.getMinecraft().currentScreen;
-		Minecraft.getMinecraft().displayGuiScreen(new GuiConnecting(parent, Minecraft.getMinecraft(), host, port));
+	public void connectToServer(String name, String host, int port, boolean isLan) {
+		FMLClientHandler.instance().setupServerList();
+		ServerData data = new ServerData(name == null ? host : name, host + ":" + port, isLan);
+
+		try {
+			this.pinger.ping(data);
+		} catch (UnknownHostException ex) {
+			LOGGER.warn("Tried to connect to an unknown host!", ex);
+			return;
+		}
+
+		FMLClientHandler.instance().connectToServer(Minecraft.getMinecraft().currentScreen, data);
 	}
 
 	@Override

@@ -97,10 +97,12 @@ public abstract class RewiMod {
 	/**
 	 * Connects directly to a multiplayer server
 	 *
+	 * @param name the name of the server (accepts <i>null</i>)
 	 * @param host the serverip
 	 * @param port the port
+	 * @param isLan wether the server is on the lan or not
 	 */
-	public abstract void connectToServer(String host, int port);
+	public abstract void connectToServer(String name, String host, int port, boolean isLan);
 
 	/**
 	 *
