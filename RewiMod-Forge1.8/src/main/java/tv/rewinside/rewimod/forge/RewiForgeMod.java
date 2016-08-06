@@ -33,6 +33,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import org.lwjgl.opengl.Display;
 import tv.rewinside.rewimod.core.RewiMod;
 import tv.rewinside.rewimod.core.gui.ButtonFactory;
+import tv.rewinside.rewimod.forge.handlers.FontRendererObjHandler;
 import tv.rewinside.rewimod.forge.handlers.GlStateManagerHandler;
 import tv.rewinside.rewimod.forge.handlers.GuiHandler;
 import tv.rewinside.rewimod.forge.handlers.TextureHandler;
@@ -42,6 +43,7 @@ import tv.rewinside.rewimod.forge.listener.GuiListener;
 @Mod(modid = "%MOD_ID%", name = "%MOD_NAME%", version = "%MOD_VERSION%", canBeDeactivated = RewiMod.DEACTIVATEABLE, certificateFingerprint = RewiMod.FINGERPRINT)
 public class RewiForgeMod extends RewiMod {
 
+	@Getter private final FontRendererObjHandler fontRendererObjHandler = new FontRendererObjHandler();
 	@Getter private final TextureHandler textureHandler = new TextureHandler();
 	@Getter private final GuiHandler guiHandler = new GuiHandler();
 	@Getter private final GlStateManagerHandler glStateManagerHandler = new GlStateManagerHandler();
