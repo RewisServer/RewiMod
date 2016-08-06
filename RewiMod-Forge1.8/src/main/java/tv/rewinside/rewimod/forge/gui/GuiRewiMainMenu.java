@@ -28,6 +28,8 @@ import tv.rewinside.rewimod.core.util.CoordinateUtil;
 import tv.rewinside.rewimod.core.util.RewiButtonConnectType;
 import tv.rewinside.rewimod.forge.gui.objects.GuiRewiConnectButton;
 import tv.rewinside.rewimod.forge.gui.objects.GuiRewiModButton;
+import tv.rewinside.rewimod.forge.gui.objects.GuiTwitterButton;
+import tv.rewinside.rewimod.forge.gui.objects.GuiYoutubeButton;
 
 public class GuiRewiMainMenu extends GuiMainMenu {
 
@@ -44,7 +46,9 @@ public class GuiRewiMainMenu extends GuiMainMenu {
 
 		super.buttonList.add(this.registerButton(new GuiRewiConnectButton(RewiButtonConnectType.MINECRAFT, lastId++, this.width / 2 + 80, this.height / 4 + 72)));
 		super.buttonList.add(this.registerButton(new GuiRewiConnectButton(RewiButtonConnectType.TEAMSPEAK, lastId++, this.width / 2 - 100, this.height / 4 + 72)));
-		super.buttonList.add(this.registerButton(new GuiRewiModButton(lastId++, this.width / 2 + 104, this.height / 4 + 132)));
+		super.buttonList.add(this.registerButton(new GuiRewiModButton(lastId++, this.width / 2 + 104, this.height / 4 + 48)));
+		super.buttonList.add(this.registerButton(new GuiTwitterButton(lastId++, this.width / 2 + 104, this.height / 4 + 72)));
+		super.buttonList.add(this.registerButton(new GuiYoutubeButton(lastId++, this.width / 2 + 104, this.height / 4 + 96)));
 		super.buttonList.get(1).width = 150;
 		super.buttonList.get(1).xPosition = this.width / 2 - 75;
 	}
