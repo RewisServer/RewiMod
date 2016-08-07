@@ -32,7 +32,6 @@ import net.minecraftforge.fml.common.event.FMLFingerprintViolationEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import org.lwjgl.opengl.Display;
 import tv.rewinside.rewimod.core.RewiMod;
-import static tv.rewinside.rewimod.core.RewiMod.LOGGER;
 import tv.rewinside.rewimod.core.gui.ButtonFactory;
 import tv.rewinside.rewimod.forge.handlers.GlStateManagerHandler;
 import tv.rewinside.rewimod.forge.handlers.GuiHandler;

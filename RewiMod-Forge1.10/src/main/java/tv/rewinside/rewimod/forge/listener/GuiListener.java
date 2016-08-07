@@ -22,8 +22,8 @@ import net.minecraft.client.gui.GuiIngameMenu;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import tv.rewinside.rewimod.forge.gui.GuiRewiMainMenu;
 import tv.rewinside.rewimod.forge.gui.GuiRewiIngameMenu;
+import tv.rewinside.rewimod.forge.gui.GuiRewiMainMenu;
 
 public class GuiListener {
 

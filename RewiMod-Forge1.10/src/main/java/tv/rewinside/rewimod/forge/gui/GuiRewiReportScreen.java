@@ -18,12 +18,11 @@
  */
 package tv.rewinside.rewimod.forge.gui;
 
+import java.awt.Color;
+import java.text.SimpleDateFormat;
 import net.minecraft.client.gui.GuiScreen;
 import tv.rewinside.rewimod.core.util.Chatlog;
 import tv.rewinside.rewimod.forge.RewiForgeMod;
-
-import java.awt.Color;
-import java.text.SimpleDateFormat;
 
 public class GuiRewiReportScreen extends GuiScreen {
 
