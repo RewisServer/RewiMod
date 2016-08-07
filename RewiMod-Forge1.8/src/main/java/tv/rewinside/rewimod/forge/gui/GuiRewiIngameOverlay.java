@@ -22,11 +22,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.client.multiplayer.ServerData;
 import net.minecraft.util.EnumChatFormatting;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import tv.rewinside.rewimod.core.RewiMod;
-import tv.rewinside.rewimod.core.gui.CoreGuiDrawer;
 
 public class GuiRewiIngameOverlay extends Gui {
 
@@ -38,29 +36,28 @@ public class GuiRewiIngameOverlay extends Gui {
 	private final EnumChatFormatting colon = EnumChatFormatting.DARK_GRAY;
 	private final EnumChatFormatting value = EnumChatFormatting.GOLD;
 
+	private long oldPing = -1;
+
 	public GuiRewiIngameOverlay() {
 		this.mc = Minecraft.getMinecraft();
 		this.fontHeight = this.mc.fontRendererObj.FONT_HEIGHT;
 	}
 
-	@SubscribeEvent
-	public void onRender(RenderGameOverlayEvent.Post event) {
-		if (event.type == RenderGameOverlayEvent.ElementType.ALL && !this.mc.gameSettings.showDebugInfo) {
-			this.drawOverlay();
-		}
-	}
-
-	private void drawOverlay() {
+	public void drawOverlay() {
 		String timeText = RewiMod.getInstance().getMessages().getMessage("gui.overlay.time");
+		ServerData serverData = this.mc.getCurrentServerData();
+		long ping = serverData != null ? serverData.pingToServer : -1;
 
-		CoreGuiDrawer.drawTransparentString(EnumChatFormatting.GRAY + "RewiMod Alpha", 5, fontHeight / 2, 80, false);
-		super.drawString(this.mc.fontRendererObj, text + "FPS" + colon + ": " + value + Minecraft.getDebugFPS(), 5, fontHeight * 2 + 5, 0xF);
-		super.drawString(this.mc.fontRendererObj, text + timeText + colon + ": " + value + dateFormat.format(new Date(System.currentTimeMillis())), 5, fontHeight * 3 + 5, 0xF);
-		super.drawString(this.mc.fontRendererObj,
-				text + "X" + colon + ": " + value + (double) Math.round(this.mc.thePlayer.posX * 100d) / 100d
-						+ text + " Y" + colon + ": " + value + (double) Math.round(this.mc.thePlayer.posY * 100d) / 100d
-						+ text + " Z" + colon + ": " + value + (double) Math.round(this.mc.thePlayer.posZ * 100d) / 100d
-				, 5, fontHeight * 4 + 5, 0xF);
+		super.drawString(this.mc.fontRendererObj, this.text + "FPS" + this.colon + ": " + this.value + Minecraft.getDebugFPS(), 5, this.fontHeight / 2 + 1, 0xF);
+		super.drawString(this.mc.fontRendererObj, this.text + timeText + this.colon + ": " + this.value + this.dateFormat.format(new Date(System.currentTimeMillis())), 5, this.fontHeight + 5, 0xF);
+		super.drawString(this.mc.fontRendererObj, this.text + "X" + this.colon + ": " + this.value + Math.round(this.mc.thePlayer.posX * 100d) / 100d, 5, this.fontHeight * 2 + 5, 0xF);
+		super.drawString(this.mc.fontRendererObj, this.text + "Y" + this.colon + ": " + this.value + Math.round(this.mc.thePlayer.posY * 100d) / 100d, 5, this.fontHeight * 3 + 5, 0xF);
+		super.drawString(this.mc.fontRendererObj, this.text + "Z" + this.colon + ": " + this.value + Math.round(this.mc.thePlayer.posZ * 100d) / 100d, 5, this.fontHeight * 4 + 5, 0xF);
+		super.drawString(this.mc.fontRendererObj, this.text + "Ping" + this.colon + ": " + this.value + (ping != -1 ? ping : this.oldPing != -1 ? this.oldPing : ".."), 5, this.fontHeight * 5 + 5, 0xF);
+
+		if (ping != -1) {
+			this.oldPing = ping;
+		}
 	}
 
 }

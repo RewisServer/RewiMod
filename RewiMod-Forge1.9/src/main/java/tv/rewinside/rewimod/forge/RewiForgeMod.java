@@ -39,7 +39,9 @@ import tv.rewinside.rewimod.forge.handlers.GlStateManagerHandler;
 import tv.rewinside.rewimod.forge.handlers.GuiHandler;
 import tv.rewinside.rewimod.forge.handlers.TextureHandler;
 import tv.rewinside.rewimod.forge.listener.ChatListener;
+import tv.rewinside.rewimod.forge.listener.ConnectListener;
 import tv.rewinside.rewimod.forge.listener.GuiListener;
+import tv.rewinside.rewimod.forge.listener.RenderListener;
 
 @Mod(modid = "%MOD_ID%", name = "%MOD_NAME%", version = "%MOD_VERSION%", canBeDeactivated = RewiMod.DEACTIVATEABLE, certificateFingerprint = RewiMod.FINGERPRINT)
 public class RewiForgeMod extends RewiMod {
@@ -71,6 +73,8 @@ public class RewiForgeMod extends RewiMod {
 	protected void registerEvents() {
 		MinecraftForge.EVENT_BUS.register(new GuiListener());
 		MinecraftForge.EVENT_BUS.register(new ChatListener());
+		MinecraftForge.EVENT_BUS.register(new ConnectListener());
+		MinecraftForge.EVENT_BUS.register(new RenderListener());
 	}
 
 	@Override

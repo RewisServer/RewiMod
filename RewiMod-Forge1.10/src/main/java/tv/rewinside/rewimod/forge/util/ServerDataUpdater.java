@@ -16,21 +16,31 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package tv.rewinside.rewimod.forge.handlers;
+package tv.rewinside.rewimod.forge.util;
 
+import java.net.UnknownHostException;
+import java.util.TimerTask;
 import net.minecraft.client.Minecraft;
-import tv.rewinside.rewimod.core.handlers.IFontRendererObjHandler;
+import net.minecraft.client.network.ServerPinger;
 
-public class FontRendererObjHandler implements IFontRendererObjHandler {
+public class ServerDataUpdater extends TimerTask {
 
-	@Override
-	public void drawString(String text, int x, int y, int color) {
-		Minecraft.getMinecraft().fontRendererObj.drawString(text, x, y, color);
+	private final Minecraft mc;
+	private final ServerPinger serverPinger = new ServerPinger();
+
+	public ServerDataUpdater() {
+		this.mc = Minecraft.getMinecraft();
 	}
 
 	@Override
-	public void drawStringWithShadow(String text, int x, int y, int color) {
-		Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(text, x, y, color);
+	public void run() {
+		if (this.mc.getCurrentServerData() == null) super.cancel();
+
+		try {
+			this.serverPinger.ping(this.mc.getCurrentServerData());
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -16,21 +16,22 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package tv.rewinside.rewimod.forge.handlers;
+package tv.rewinside.rewimod.forge.listener;
 
 import net.minecraft.client.Minecraft;
-import tv.rewinside.rewimod.core.handlers.IFontRendererObjHandler;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import tv.rewinside.rewimod.forge.gui.GuiRewiIngameOverlay;
 
-public class FontRendererObjHandler implements IFontRendererObjHandler {
+public class RenderListener {
 
-	@Override
-	public void drawString(String text, int x, int y, int color) {
-		Minecraft.getMinecraft().fontRendererObj.drawString(text, x, y, color);
-	}
+	private final GuiRewiIngameOverlay ingameOverlay = new GuiRewiIngameOverlay();
 
-	@Override
-	public void drawStringWithShadow(String text, int x, int y, int color) {
-		Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(text, x, y, color);
+	@SubscribeEvent
+	public void onPostRender(RenderGameOverlayEvent.Post event) {
+		if (event.type == RenderGameOverlayEvent.ElementType.ALL && !Minecraft.getMinecraft().gameSettings.showDebugInfo) {
+			this.ingameOverlay.drawOverlay();
+		}
 	}
 
 }

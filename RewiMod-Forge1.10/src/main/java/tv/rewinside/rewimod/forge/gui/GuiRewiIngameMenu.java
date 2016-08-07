@@ -23,7 +23,9 @@ import java.util.HashMap;
 import java.util.Map;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiIngameMenu;
+import net.minecraft.util.text.TextFormatting;
 import tv.rewinside.rewimod.core.RewiMod;
+import tv.rewinside.rewimod.core.gui.CoreGuiDrawer;
 import tv.rewinside.rewimod.core.gui.objects.IGuiButton;
 import tv.rewinside.rewimod.core.util.CoordinateUtil;
 import tv.rewinside.rewimod.forge.gui.objects.GuiRewiReportsButton;
@@ -42,6 +44,13 @@ public class GuiRewiIngameMenu extends GuiIngameMenu {
 		lastId += 100; //Mojang Nailed it
 
 		super.buttonList.add(this.registerButton(new GuiRewiReportsButton(lastId + 2, this.width / 2 + 104, this.height / 4 + 56)));
+	}
+
+	@Override
+	public void drawScreen(int mouseX, int mouseY, float partialTicks) {
+		super.drawScreen(mouseX, mouseY, partialTicks);
+
+		CoreGuiDrawer.drawTransparentString("" + TextFormatting.GRAY + "RewiMod Alpha", this.width - this.mc.fontRendererObj.getStringWidth("RewiMod Alpha") - 4, this.height - 10, 60, false);
 	}
 
 	@Override
