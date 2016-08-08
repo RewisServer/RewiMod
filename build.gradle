@@ -43,6 +43,7 @@ subprojects {
 	
 	group = 'tv.rewinside.rewimod'
 	checkstyle.configFile = rootProject.file("config/checkstyle/checkstyle.xml")
+	checkstyle.configProperties = ['basedir': "$rootDir"]
 	
 	checkstyle {
 		toolVersion = "7.0"
