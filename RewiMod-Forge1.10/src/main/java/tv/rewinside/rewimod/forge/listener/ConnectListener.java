@@ -18,21 +18,22 @@
  */
 package tv.rewinside.rewimod.forge.listener;
 
-import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.FMLNetworkEvent;
+import tv.rewinside.rewimod.core.RewiMod;
 import tv.rewinside.rewimod.forge.util.ServerDataUpdater;
 
 public class ConnectListener {
 
-	private final ScheduledExecutorService executorService = Executors.newSingleThreadScheduledExecutor();
+	private final ScheduledExecutorService executorService = RewiMod.getInstance().getExecutorService();
 
 	@SubscribeEvent
 	public void onConnect(FMLNetworkEvent.ClientConnectedToServerEvent event) {
-		this.executorService.scheduleAtFixedRate(new ServerDataUpdater(), 0, 10, TimeUnit.SECONDS);
+		if (!event.isLocal()) {
+			this.executorService.scheduleAtFixedRate(new ServerDataUpdater(), 0, 10, TimeUnit.SECONDS);
+		}
 	}
 
 	@SubscribeEvent
