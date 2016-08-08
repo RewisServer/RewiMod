@@ -30,4 +30,29 @@ public interface IGlStateManagerHandler {
 	 */
 	public void color(float r, float g, float b);
 
+	/**
+	 * Pushes the matrix
+	 */
+	public void pushMatrix();
+
+	/**
+	 * Pops the matrix
+	 */
+	public void popMatrix();
+
+	/**
+	 * Enables blend
+	 */
+	public void enableBlend();
+
+	/**
+	 * Disables blend
+	 */
+	public void disableBlend();
+
+	/**
+	 * Disables alpha
+	 */
+	public void disableAlpha();
+
 }

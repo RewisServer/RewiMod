@@ -20,9 +20,7 @@ package tv.rewinside.rewimod.core.gui;
 
 import tv.rewinside.rewimod.core.RewiMod;
 import tv.rewinside.rewimod.core.gui.objects.IGuiButton;
-import tv.rewinside.rewimod.core.handlers.IGlStateManagerHandler;
-import tv.rewinside.rewimod.core.handlers.IGuiHandler;
-import tv.rewinside.rewimod.core.handlers.ITextureHandler;
+import tv.rewinside.rewimod.core.handlers.*;
 import tv.rewinside.rewimod.core.util.CoordinateUtil;
 import tv.rewinside.rewimod.core.util.RewiButtonConnectType;
 
@@ -33,6 +31,32 @@ public class CoreGuiDrawer {
 	 */
 	private CoreGuiDrawer() {
 		throw new UnsupportedOperationException("Cannot instantiate helper class!");
+	}
+
+	/**
+	 * Draws a text with the given transparency
+	 *
+	 * @param text the text
+	 * @param xPos the <i>x</i> coordinate of the text
+	 * @param yPos the <i>y</i> coordinate of the text
+	 * @param transparency the transparency in percent
+	 * @param shadow whether the text should have a shadow or not
+	 */
+	public static void drawTransparentString(String text, int xPos, int yPos, int transparency, boolean shadow) {
+		if (transparency > 100 || transparency < 0) throw new IllegalArgumentException("Transparency can not be " + transparency + "%");
+
+		int i = 0xF | (int) ((transparency / 100d) * 255) << 24;
+
+		getGlStateManager().pushMatrix();
+		getGlStateManager().enableBlend();
+		if (shadow) {
+			getFontRendererObjHandler().drawStringWithShadow(text, xPos, yPos, i);
+		} else {
+			getFontRendererObjHandler().drawString(text, xPos, yPos, i);
+		}
+		getGlStateManager().disableAlpha();
+		getGlStateManager().disableBlend();
+		getGlStateManager().popMatrix();
 	}
 
 	/**
@@ -161,6 +185,15 @@ public class CoreGuiDrawer {
 	 */
 	private static ITextureHandler getTextureHandler() {
 		return RewiMod.getInstance().getTextureHandler();
+	}
+
+	/**
+	 * Shortcut method for getting the FontRendererObjHandler
+	 *
+	 * @return the representation of the FontRendererObjHandler
+	 */
+	private static IFontRendererObjHandler getFontRendererObjHandler() {
+		return RewiMod.getInstance().getFontRendererObjHandler();
 	}
 
 	/**

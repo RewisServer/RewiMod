@@ -16,41 +16,22 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package tv.rewinside.rewimod.forge.handlers;
+package tv.rewinside.rewimod.forge.listener;
 
-import net.minecraft.client.renderer.GlStateManager;
-import tv.rewinside.rewimod.core.handlers.IGlStateManagerHandler;
+import net.minecraft.client.Minecraft;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import tv.rewinside.rewimod.forge.gui.GuiRewiIngameOverlay;
 
-public class GlStateManagerHandler implements IGlStateManagerHandler {
+public class RenderListener {
 
-	@Override
-	public void color(float r, float g, float b) {
-		GlStateManager.color(r, g, b);
-	}
+	private final GuiRewiIngameOverlay ingameOverlay = new GuiRewiIngameOverlay();
 
-	@Override
-	public void pushMatrix() {
-		GlStateManager.pushMatrix();
-	}
-
-	@Override
-	public void popMatrix() {
-		GlStateManager.popMatrix();
-	}
-
-	@Override
-	public void enableBlend() {
-		GlStateManager.enableBlend();
-	}
-
-	@Override
-	public void disableBlend() {
-		GlStateManager.disableBlend();
-	}
-
-	@Override
-	public void disableAlpha() {
-		GlStateManager.disableAlpha();
+	@SubscribeEvent
+	public void onPostRender(RenderGameOverlayEvent.Post event) {
+		if (event.getType() == RenderGameOverlayEvent.ElementType.ALL && !Minecraft.getMinecraft().gameSettings.showDebugInfo) {
+			this.ingameOverlay.drawOverlay();
+		}
 	}
 
 }

@@ -24,13 +24,14 @@ import java.io.IOException;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+
 import lombok.Getter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import tv.rewinside.rewimod.core.gui.ButtonFactory;
-import tv.rewinside.rewimod.core.handlers.IGlStateManagerHandler;
-import tv.rewinside.rewimod.core.handlers.IGuiHandler;
-import tv.rewinside.rewimod.core.handlers.ITextureHandler;
+import tv.rewinside.rewimod.core.handlers.*;
 import tv.rewinside.rewimod.core.util.Chatlog;
 import tv.rewinside.rewimod.core.util.Messages;
 
@@ -43,6 +44,8 @@ public abstract class RewiMod {
 	@Getter private static RewiMod instance;
 
 	@Getter private final Messages messages = new Messages();
+
+	@Getter private final ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
 
 	@Getter private final int confirmDisconnectButtonColor = new Color(252, 53, 57).getRGB();
 
@@ -155,6 +158,13 @@ public abstract class RewiMod {
 	 * @param displayTitle the title as String
 	 */
 	public abstract void setDisplayTitle(String displayTitle);
+
+	/**
+	 * Gets the font render obj
+	 *
+	 * @return an implementation of {@link IFontRendererObjHandler}
+	 */
+	public abstract IFontRendererObjHandler getFontRendererObjHandler();
 
 	/**
 	 * Gets the handler for handling textures

@@ -16,41 +16,31 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package tv.rewinside.rewimod.forge.handlers;
+package tv.rewinside.rewimod.forge.util;
 
-import net.minecraft.client.renderer.GlStateManager;
-import tv.rewinside.rewimod.core.handlers.IGlStateManagerHandler;
+import java.net.UnknownHostException;
+import java.util.TimerTask;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.network.OldServerPinger;
 
-public class GlStateManagerHandler implements IGlStateManagerHandler {
+public class ServerDataUpdater extends TimerTask {
 
-	@Override
-	public void color(float r, float g, float b) {
-		GlStateManager.color(r, g, b);
+	private final Minecraft mc;
+	private final OldServerPinger serverPinger = new OldServerPinger();
+
+	public ServerDataUpdater() {
+		this.mc = Minecraft.getMinecraft();
 	}
 
 	@Override
-	public void pushMatrix() {
-		GlStateManager.pushMatrix();
-	}
+	public void run() {
+		if (this.mc.getCurrentServerData() == null) super.cancel();
 
-	@Override
-	public void popMatrix() {
-		GlStateManager.popMatrix();
-	}
-
-	@Override
-	public void enableBlend() {
-		GlStateManager.enableBlend();
-	}
-
-	@Override
-	public void disableBlend() {
-		GlStateManager.disableBlend();
-	}
-
-	@Override
-	public void disableAlpha() {
-		GlStateManager.disableAlpha();
+		try {
+			this.serverPinger.ping(this.mc.getCurrentServerData());
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
