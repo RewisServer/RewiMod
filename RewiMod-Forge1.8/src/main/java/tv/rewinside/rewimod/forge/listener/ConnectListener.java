@@ -32,7 +32,9 @@ public class ConnectListener {
 
 	@SubscribeEvent
 	public void onConnect(FMLNetworkEvent.ClientConnectedToServerEvent event) {
-		this.executorService.scheduleAtFixedRate(new ServerDataUpdater(), 0, 10, TimeUnit.SECONDS);
+		if (!event.isLocal) {
+			this.executorService.scheduleAtFixedRate(new ServerDataUpdater(), 0, 10, TimeUnit.SECONDS);
+		}
 	}
 
 	@SubscribeEvent

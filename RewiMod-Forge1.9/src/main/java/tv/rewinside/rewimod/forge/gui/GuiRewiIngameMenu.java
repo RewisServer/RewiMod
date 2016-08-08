@@ -43,7 +43,24 @@ public class GuiRewiIngameMenu extends GuiIngameMenu {
 
 		lastId += 100; //Mojang Nailed it
 
-		super.buttonList.add(this.registerButton(new GuiRewiReportsButton(lastId + 2, this.width / 2 + 104, this.height / 4 + 56)));
+		int reportX, reportY, reportWidth;
+
+		GuiButton shareToLan = super.buttonList.get(4);
+		if (!shareToLan.enabled) {
+			shareToLan.visible = false;
+
+			reportX = shareToLan.xPosition;
+			reportY = shareToLan.yPosition;
+			reportWidth = shareToLan.width;
+		} else {
+			reportX = this.width / 2 + 2;
+			reportY = this.height / 4 + 56;
+			reportWidth = 98;
+
+			shareToLan.width = reportWidth;
+		}
+
+		super.buttonList.add(this.registerButton(new GuiRewiReportsButton(lastId + 2, reportX, reportY, reportWidth)));
 	}
 
 	@Override

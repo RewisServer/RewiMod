@@ -53,7 +53,9 @@ public class GuiRewiIngameOverlay extends Gui {
 		super.drawString(this.mc.fontRendererObj, this.text + "X" + this.colon + ": " + this.value + Math.round(this.mc.thePlayer.posX * 100d) / 100d, 5, this.fontHeight * 2 + 5, 0xF);
 		super.drawString(this.mc.fontRendererObj, this.text + "Y" + this.colon + ": " + this.value + Math.round(this.mc.thePlayer.posY * 100d) / 100d, 5, this.fontHeight * 3 + 5, 0xF);
 		super.drawString(this.mc.fontRendererObj, this.text + "Z" + this.colon + ": " + this.value + Math.round(this.mc.thePlayer.posZ * 100d) / 100d, 5, this.fontHeight * 4 + 5, 0xF);
-		super.drawString(this.mc.fontRendererObj, this.text + "Ping" + this.colon + ": " + this.value + (ping != -1 ? ping : this.oldPing != -1 ? this.oldPing : ".."), 5, this.fontHeight * 5 + 5, 0xF);
+		if (!Minecraft.getMinecraft().isSingleplayer()) {
+			super.drawString(this.mc.fontRendererObj, this.text + "Ping" + this.colon + ": " + this.value + (ping != -1 ? ping : this.oldPing != -1 ? this.oldPing : ".."), 5, this.fontHeight * 5 + 5, 0xF);
+		}
 
 		if (ping != -1) {
 			this.oldPing = ping;
