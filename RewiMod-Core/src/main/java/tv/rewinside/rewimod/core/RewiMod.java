@@ -26,12 +26,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-
 import lombok.Getter;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import tv.rewinside.rewimod.core.gui.ButtonFactory;
-import tv.rewinside.rewimod.core.handlers.*;
+import tv.rewinside.rewimod.core.handlers.IFontRendererObjHandler;
+import tv.rewinside.rewimod.core.handlers.IGlStateManagerHandler;
+import tv.rewinside.rewimod.core.handlers.IGuiHandler;
+import tv.rewinside.rewimod.core.handlers.ITextureHandler;
 import tv.rewinside.rewimod.core.util.Chatlog;
 import tv.rewinside.rewimod.core.util.Messages;
 
