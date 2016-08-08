@@ -16,41 +16,28 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package tv.rewinside.rewimod.forge.handlers;
+package tv.rewinside.rewimod.core.handlers;
 
-import net.minecraft.client.renderer.GlStateManager;
-import tv.rewinside.rewimod.core.handlers.IGlStateManagerHandler;
+public interface IFontRendererObjHandler {
 
-public class GlStateManagerHandler implements IGlStateManagerHandler {
+	/**
+	 * Draws a string
+	 *
+	 * @param text the text
+	 * @param x the <i>x</i> coordinate of the text
+	 * @param y the <i>y</i> coordinate of the text
+	 * @param color the <i>color</i> of the text
+	 */
+	public void drawString(String text, int x, int y, int color);
 
-	@Override
-	public void color(float r, float g, float b) {
-		GlStateManager.color(r, g, b);
-	}
-
-	@Override
-	public void pushMatrix() {
-		GlStateManager.pushMatrix();
-	}
-
-	@Override
-	public void popMatrix() {
-		GlStateManager.popMatrix();
-	}
-
-	@Override
-	public void enableBlend() {
-		GlStateManager.enableBlend();
-	}
-
-	@Override
-	public void disableBlend() {
-		GlStateManager.disableBlend();
-	}
-
-	@Override
-	public void disableAlpha() {
-		GlStateManager.disableAlpha();
-	}
+	/**
+	 * Draws a string with shadow
+	 *
+	 * @param text the text
+	 * @param x the <i>x</i> coordinate of the text
+	 * @param y the <i>y</i> coordinate of the text
+	 * @param color the <i>color</i> of the text
+	 */
+	public void drawStringWithShadow(String text, int x, int y, int color);
 
 }
