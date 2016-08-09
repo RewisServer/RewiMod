@@ -18,34 +18,16 @@
  */
 package tv.rewinside.rewimod.forge.listener;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiIngameMenu;
-import net.minecraft.client.gui.GuiLanguage;
-import net.minecraft.client.gui.GuiMainMenu;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import tv.rewinside.rewimod.forge.gui.GuiRewiIngameMenu;
-import tv.rewinside.rewimod.forge.gui.GuiRewiLanguage;
-import tv.rewinside.rewimod.forge.gui.GuiRewiMainMenu;
+import tv.rewinside.rewimod.core.RewiMod;
+import tv.rewinside.rewimod.forge.event.LanguageChangedEvent;
 
-public class GuiListener {
 
-	private GuiScreen oldScreen;
+public class LanguageListener {
 
 	@SubscribeEvent
-	public void onGuiOpen(GuiOpenEvent event) {
-		if (event.gui instanceof GuiMainMenu) {
-			event.gui = new GuiRewiMainMenu();
-		}
-		if (event.gui instanceof GuiIngameMenu) {
-			event.gui = new GuiRewiIngameMenu();
-		}
-		if (event.gui instanceof GuiLanguage) {
-			event.gui = new GuiRewiLanguage(oldScreen, Minecraft.getMinecraft().gameSettings, Minecraft.getMinecraft().getLanguageManager());
-		}
-
-		oldScreen = event.gui;
+	public void onChange(LanguageChangedEvent event) {
+		RewiMod.getInstance().getMessages().load(event.getLocale());
 	}
 
 }
