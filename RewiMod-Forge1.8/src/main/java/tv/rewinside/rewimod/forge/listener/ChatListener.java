@@ -19,7 +19,7 @@
 package tv.rewinside.rewimod.forge.listener;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.util.IChatComponent;
+import net.minecraft.client.multiplayer.ServerData;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import tv.rewinside.rewimod.core.util.Chatlog;
@@ -28,12 +28,11 @@ public class ChatListener {
 
 	@SubscribeEvent
 	public void onChatReceive(ClientChatReceivedEvent event) {
-		IChatComponent message = event.message;
-		String sender = !message.getUnformattedText().isEmpty() ? message.getSiblings().get(0).getUnformattedText().trim() : "";
+		ServerData serverData = Minecraft.getMinecraft().getCurrentServerData();
+		if (serverData == null) return;
 
-		if (Minecraft.getMinecraft().getCurrentServerData() == null) return;
-
-		if (Chatlog.shouldCreateChatlog(message.getUnformattedText(), Minecraft.getMinecraft().getSession().getUsername(), sender, Minecraft.getMinecraft().getCurrentServerData().serverIP)) {
+		String sender = Chatlog.shouldCreateChatlog(event.message.getUnformattedText(), Minecraft.getMinecraft().getSession().getUsername(), serverData.serverIP);
+		if (sender != null) {
 			Minecraft.getMinecraft().thePlayer.sendChatMessage("/chatlog " + sender);
 		}
 	}
