@@ -2,7 +2,7 @@
 RewiMod
 =======
 
-![Logo](http://i.uploa.gq/39522.png)
+![Logo](http://i.snz.at/rDgi7p)
 
 **Eine Minecraft Client Erweiterung von Spielern für die Community**
 
@@ -29,7 +29,7 @@ Die Projektleitung besteht aus ComputerBaer und Floppy012. Wir sind auf dem [rew
 RewiMod Discord Server
 -------
 
-[![Discord Einladung](https://discordapp.com/api/servers/205661485576224768/widget.png?style=banner3)](https://discord.gg/ZpAe9qn)
+[![Discord Einladung](https://discordapp.com/api/guilds/205661485576224768/widget.png?style=banner3)](https://discord.gg/ZpAe9qn)
 
 Travis CI
 -------
