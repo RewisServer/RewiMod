@@ -1,6 +1,6 @@
 [
 {
-  "modid": "RewiMod",
+  "modid": "rewimod",
   "name": "RewiMod",
   "description": "Eine Erweiterung des Minecraftclients",
   "version": "${version}",

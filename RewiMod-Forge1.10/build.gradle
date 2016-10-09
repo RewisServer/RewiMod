@@ -7,7 +7,7 @@ minecraft {
 	runDir = "../run"
 	
 	replaceIn "/tv/rewinside/rewimod/forge/RewiForgeMod.java"
-	replace "%MOD_ID%", rootProject.name
+	replace "%MOD_ID%", rootProject.name.toLowerCase()
 	replace "%MOD_NAME%", rootProject.name
 	replace "%MOD_VERSION%", project.ext.simpleVersion
 }
