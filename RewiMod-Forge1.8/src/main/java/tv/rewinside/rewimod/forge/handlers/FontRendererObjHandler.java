@@ -16,25 +16,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package tv.rewinside.rewimod.forge.listener;
+package tv.rewinside.rewimod.forge.handlers;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ServerData;
-import net.minecraftforge.client.event.ClientChatReceivedEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import tv.rewinside.rewimod.core.util.Chatlog;
+import tv.rewinside.rewimod.core.handlers.IFontRendererObjHandler;
 
-public class ChatListener {
+public class FontRendererObjHandler implements IFontRendererObjHandler {
 
-	@SubscribeEvent
-	public void onChatReceive(ClientChatReceivedEvent event) {
-		ServerData serverData = Minecraft.getMinecraft().getCurrentServerData();
-		if (serverData == null) return;
+	@Override
+	public void drawString(String text, int x, int y, int color) {
+		Minecraft.getMinecraft().fontRendererObj.drawString(text, x, y, color);
+	}
 
-		String sender = Chatlog.shouldCreateChatlog(event.getMessage().getUnformattedText(), Minecraft.getMinecraft().getSession().getUsername(), serverData.serverIP);
-		if (sender != null) {
-			Minecraft.getMinecraft().thePlayer.sendChatMessage("/chatlog " + sender);
-		}
+	@Override
+	public void drawStringWithShadow(String text, int x, int y, int color) {
+		Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(text, x, y, color);
 	}
 
 }

@@ -18,14 +18,20 @@
  */
 package tv.rewinside.rewimod.forge.listener;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiIngameMenu;
+import net.minecraft.client.gui.GuiLanguage;
 import net.minecraft.client.gui.GuiMainMenu;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import tv.rewinside.rewimod.forge.gui.GuiRewiMainMenu;
 import tv.rewinside.rewimod.forge.gui.GuiRewiIngameMenu;
+import tv.rewinside.rewimod.forge.gui.GuiRewiLanguage;
+import tv.rewinside.rewimod.forge.gui.GuiRewiMainMenu;
 
 public class GuiListener {
+
+	private GuiScreen oldScreen;
 
 	@SubscribeEvent
 	public void onGuiOpen(GuiOpenEvent event) {
@@ -35,6 +41,11 @@ public class GuiListener {
 		if (event.getGui() instanceof GuiIngameMenu) {
 			event.setGui(new GuiRewiIngameMenu());
 		}
+		if (event.getGui() instanceof GuiLanguage) {
+			event.setGui(new GuiRewiLanguage(oldScreen, Minecraft.getMinecraft().gameSettings, Minecraft.getMinecraft().getLanguageManager()));
+		}
+
+		oldScreen = event.getGui();
 	}
 
 }

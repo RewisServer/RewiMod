@@ -32,17 +32,21 @@ import net.minecraftforge.fml.common.event.FMLFingerprintViolationEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import org.lwjgl.opengl.Display;
 import tv.rewinside.rewimod.core.RewiMod;
-import static tv.rewinside.rewimod.core.RewiMod.LOGGER;
 import tv.rewinside.rewimod.core.gui.ButtonFactory;
+import tv.rewinside.rewimod.forge.handlers.FontRendererObjHandler;
 import tv.rewinside.rewimod.forge.handlers.GlStateManagerHandler;
 import tv.rewinside.rewimod.forge.handlers.GuiHandler;
 import tv.rewinside.rewimod.forge.handlers.TextureHandler;
 import tv.rewinside.rewimod.forge.listener.ChatListener;
+import tv.rewinside.rewimod.forge.listener.ConnectListener;
 import tv.rewinside.rewimod.forge.listener.GuiListener;
+import tv.rewinside.rewimod.forge.listener.LanguageListener;
+import tv.rewinside.rewimod.forge.listener.RenderListener;
 
 @Mod(modid = "%MOD_ID%", name = "%MOD_NAME%", version = "%MOD_VERSION%", canBeDeactivated = RewiMod.DEACTIVATEABLE, certificateFingerprint = RewiMod.FINGERPRINT)
 public class RewiForgeMod extends RewiMod {
 
+	@Getter private final FontRendererObjHandler fontRendererObjHandler = new FontRendererObjHandler();
 	@Getter private final TextureHandler textureHandler = new TextureHandler();
 	@Getter private final GuiHandler guiHandler = new GuiHandler();
 	@Getter private final GlStateManagerHandler glStateManagerHandler = new GlStateManagerHandler();
@@ -69,6 +73,9 @@ public class RewiForgeMod extends RewiMod {
 	protected void registerEvents() {
 		MinecraftForge.EVENT_BUS.register(new GuiListener());
 		MinecraftForge.EVENT_BUS.register(new ChatListener());
+		MinecraftForge.EVENT_BUS.register(new ConnectListener());
+		MinecraftForge.EVENT_BUS.register(new RenderListener());
+		MinecraftForge.EVENT_BUS.register(new LanguageListener());
 	}
 
 	@Override

@@ -19,21 +19,18 @@
 package tv.rewinside.rewimod.forge.listener;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ServerData;
-import net.minecraftforge.client.event.ClientChatReceivedEvent;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import tv.rewinside.rewimod.core.util.Chatlog;
+import tv.rewinside.rewimod.forge.gui.GuiRewiIngameOverlay;
 
-public class ChatListener {
+public class RenderListener {
+
+	private final GuiRewiIngameOverlay ingameOverlay = new GuiRewiIngameOverlay();
 
 	@SubscribeEvent
-	public void onChatReceive(ClientChatReceivedEvent event) {
-		ServerData serverData = Minecraft.getMinecraft().getCurrentServerData();
-		if (serverData == null) return;
-
-		String sender = Chatlog.shouldCreateChatlog(event.getMessage().getUnformattedText(), Minecraft.getMinecraft().getSession().getUsername(), serverData.serverIP);
-		if (sender != null) {
-			Minecraft.getMinecraft().thePlayer.sendChatMessage("/chatlog " + sender);
+	public void onPostRender(RenderGameOverlayEvent.Post event) {
+		if (event.type == RenderGameOverlayEvent.ElementType.ALL && !Minecraft.getMinecraft().gameSettings.showDebugInfo) {
+			this.ingameOverlay.drawOverlay();
 		}
 	}
 

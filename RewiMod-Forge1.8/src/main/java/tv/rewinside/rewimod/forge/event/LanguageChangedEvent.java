@@ -16,25 +16,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package tv.rewinside.rewimod.forge.listener;
+package tv.rewinside.rewimod.forge.event;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ServerData;
-import net.minecraftforge.client.event.ClientChatReceivedEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import tv.rewinside.rewimod.core.util.Chatlog;
+import lombok.Getter;
+import net.minecraftforge.fml.common.eventhandler.Event;
 
-public class ChatListener {
+public class LanguageChangedEvent extends Event {
 
-	@SubscribeEvent
-	public void onChatReceive(ClientChatReceivedEvent event) {
-		ServerData serverData = Minecraft.getMinecraft().getCurrentServerData();
-		if (serverData == null) return;
+	@Getter private final String locale;
 
-		String sender = Chatlog.shouldCreateChatlog(event.getMessage().getUnformattedText(), Minecraft.getMinecraft().getSession().getUsername(), serverData.serverIP);
-		if (sender != null) {
-			Minecraft.getMinecraft().thePlayer.sendChatMessage("/chatlog " + sender);
-		}
+	public LanguageChangedEvent(String locale) {
+		this.locale = locale;
 	}
 
 }

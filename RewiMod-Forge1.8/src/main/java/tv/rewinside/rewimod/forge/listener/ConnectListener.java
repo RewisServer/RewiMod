@@ -18,23 +18,28 @@
  */
 package tv.rewinside.rewimod.forge.listener;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ServerData;
-import net.minecraftforge.client.event.ClientChatReceivedEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import tv.rewinside.rewimod.core.util.Chatlog;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
-public class ChatListener {
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.network.FMLNetworkEvent;
+import tv.rewinside.rewimod.core.RewiMod;
+import tv.rewinside.rewimod.forge.util.ServerDataUpdater;
+
+public class ConnectListener {
+
+	private final ScheduledExecutorService executorService = RewiMod.getInstance().getExecutorService();
 
 	@SubscribeEvent
-	public void onChatReceive(ClientChatReceivedEvent event) {
-		ServerData serverData = Minecraft.getMinecraft().getCurrentServerData();
-		if (serverData == null) return;
-
-		String sender = Chatlog.shouldCreateChatlog(event.getMessage().getUnformattedText(), Minecraft.getMinecraft().getSession().getUsername(), serverData.serverIP);
-		if (sender != null) {
-			Minecraft.getMinecraft().thePlayer.sendChatMessage("/chatlog " + sender);
+	public void onConnect(FMLNetworkEvent.ClientConnectedToServerEvent event) {
+		if (!event.isLocal) {
+			this.executorService.scheduleAtFixedRate(new ServerDataUpdater(), 0, 10, TimeUnit.SECONDS);
 		}
+	}
+
+	@SubscribeEvent
+	public void onDisconnect(FMLNetworkEvent.ClientDisconnectionFromServerEvent event) {
+		this.executorService.shutdown();
 	}
 
 }

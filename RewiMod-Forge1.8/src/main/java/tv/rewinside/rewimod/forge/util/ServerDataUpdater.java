@@ -16,24 +16,30 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package tv.rewinside.rewimod.forge.listener;
+package tv.rewinside.rewimod.forge.util;
 
+import java.net.UnknownHostException;
+import java.util.TimerTask;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ServerData;
-import net.minecraftforge.client.event.ClientChatReceivedEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import tv.rewinside.rewimod.core.util.Chatlog;
+import net.minecraft.client.network.OldServerPinger;
 
-public class ChatListener {
+public class ServerDataUpdater extends TimerTask {
 
-	@SubscribeEvent
-	public void onChatReceive(ClientChatReceivedEvent event) {
-		ServerData serverData = Minecraft.getMinecraft().getCurrentServerData();
-		if (serverData == null) return;
+	private final Minecraft mc;
+	private final OldServerPinger serverPinger = new OldServerPinger();
 
-		String sender = Chatlog.shouldCreateChatlog(event.getMessage().getUnformattedText(), Minecraft.getMinecraft().getSession().getUsername(), serverData.serverIP);
-		if (sender != null) {
-			Minecraft.getMinecraft().thePlayer.sendChatMessage("/chatlog " + sender);
+	public ServerDataUpdater() {
+		this.mc = Minecraft.getMinecraft();
+	}
+
+	@Override
+	public void run() {
+		if (this.mc.getCurrentServerData() == null) super.cancel();
+
+		try {
+			this.serverPinger.ping(this.mc.getCurrentServerData());
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
 		}
 	}
 

@@ -19,11 +19,16 @@
 package tv.rewinside.rewimod.core.util;
 
 import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import lombok.Getter;
 import tv.rewinside.rewimod.core.RewiMod;
 
 @Getter
 public class Chatlog {
+
+	private static final Pattern SERVER_ADDRESS = Pattern.compile("^([a-zA-Z0-9\\-]+\\.)?rewinside\\.tv(:[0-9]{1,5})?$", Pattern.CASE_INSENSITIVE);
+	private static final Pattern CHAT_FORMAT = Pattern.compile("^([a-zA-Z0-9_]{1,16}) » (.*)$");
 
 	private final String link;
 	private final String user;
@@ -47,22 +52,32 @@ public class Chatlog {
 	 *
 	 * @param message the message to check
 	 * @param user the mod user
-	 * @param sender the message sender
 	 * @param serverIp the server ip
-	 * @return if a chatlog should be created
+	 * @return sender name if a chatlog should be created
 	 */
-	public static boolean shouldCreateChatlog(String message, String user, String sender, String serverIp) {
-		if (user.equals(sender) || !serverIp.contains("rewinside.tv")) {
-			return false;
+	public static String shouldCreateChatlog(String message, String user, String serverIp) {
+		if (!SERVER_ADDRESS.matcher(serverIp).matches()) {
+			return null;
 		}
 
+		Matcher chatMatcher = CHAT_FORMAT.matcher(message);
+		if (!chatMatcher.matches()) {
+			return null;
+		}
+
+		String sender = chatMatcher.group(1);
+		if (sender.equals(user)) {
+			return null;
+		}
+
+		String chatMessage = chatMatcher.group(2);
 		for (String badWord : RewiMod.getInstance().getBlacklistedWords()) {
-			if (message.contains(badWord)) {
-				return true;
+			if (chatMessage.contains(badWord)) {
+				return sender;
 			}
 		}
 
-		return false;
+		return null;
 	}
 
 }

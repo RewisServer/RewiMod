@@ -18,23 +18,16 @@
  */
 package tv.rewinside.rewimod.forge.listener;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ServerData;
-import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import tv.rewinside.rewimod.core.util.Chatlog;
+import tv.rewinside.rewimod.core.RewiMod;
+import tv.rewinside.rewimod.forge.event.LanguageChangedEvent;
 
-public class ChatListener {
+
+public class LanguageListener {
 
 	@SubscribeEvent
-	public void onChatReceive(ClientChatReceivedEvent event) {
-		ServerData serverData = Minecraft.getMinecraft().getCurrentServerData();
-		if (serverData == null) return;
-
-		String sender = Chatlog.shouldCreateChatlog(event.getMessage().getUnformattedText(), Minecraft.getMinecraft().getSession().getUsername(), serverData.serverIP);
-		if (sender != null) {
-			Minecraft.getMinecraft().thePlayer.sendChatMessage("/chatlog " + sender);
-		}
+	public void onChange(LanguageChangedEvent event) {
+		RewiMod.getInstance().getMessages().load(event.getLocale());
 	}
 
 }

@@ -28,4 +28,29 @@ public class GlStateManagerHandler implements IGlStateManagerHandler {
 		GlStateManager.color(r, g, b);
 	}
 
+	@Override
+	public void pushMatrix() {
+		GlStateManager.pushMatrix();
+	}
+
+	@Override
+	public void popMatrix() {
+		GlStateManager.popMatrix();
+	}
+
+	@Override
+	public void enableBlend() {
+		GlStateManager.enableBlend();
+	}
+
+	@Override
+	public void disableBlend() {
+		GlStateManager.disableBlend();
+	}
+
+	@Override
+	public void disableAlpha() {
+		GlStateManager.disableAlpha();
+	}
+
 }

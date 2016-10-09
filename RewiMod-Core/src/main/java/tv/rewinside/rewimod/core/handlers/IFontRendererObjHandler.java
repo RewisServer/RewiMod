@@ -16,25 +16,28 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package tv.rewinside.rewimod.forge.listener;
+package tv.rewinside.rewimod.core.handlers;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.ServerData;
-import net.minecraftforge.client.event.ClientChatReceivedEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import tv.rewinside.rewimod.core.util.Chatlog;
+public interface IFontRendererObjHandler {
 
-public class ChatListener {
+	/**
+	 * Draws a string
+	 *
+	 * @param text the text
+	 * @param x the <i>x</i> coordinate of the text
+	 * @param y the <i>y</i> coordinate of the text
+	 * @param color the <i>color</i> of the text
+	 */
+	public void drawString(String text, int x, int y, int color);
 
-	@SubscribeEvent
-	public void onChatReceive(ClientChatReceivedEvent event) {
-		ServerData serverData = Minecraft.getMinecraft().getCurrentServerData();
-		if (serverData == null) return;
-
-		String sender = Chatlog.shouldCreateChatlog(event.getMessage().getUnformattedText(), Minecraft.getMinecraft().getSession().getUsername(), serverData.serverIP);
-		if (sender != null) {
-			Minecraft.getMinecraft().thePlayer.sendChatMessage("/chatlog " + sender);
-		}
-	}
+	/**
+	 * Draws a string with shadow
+	 *
+	 * @param text the text
+	 * @param x the <i>x</i> coordinate of the text
+	 * @param y the <i>y</i> coordinate of the text
+	 * @param color the <i>color</i> of the text
+	 */
+	public void drawStringWithShadow(String text, int x, int y, int color);
 
 }
