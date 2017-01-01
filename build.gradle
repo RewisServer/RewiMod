@@ -1,5 +1,5 @@
 ext.vendor = "rewinside.tv"
-ext.log4jVersion = "2.6.2"
+ext.log4jVersion = "2.7"
 
 buildscript {
 	repositories {
@@ -14,7 +14,7 @@ buildscript {
 	
 	dependencies {
 		classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
-		classpath 'org.ajoberstar:gradle-git:1.4.2'
+		classpath 'org.ajoberstar:gradle-git:1.6.0'
 		classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
 	}
 }
@@ -55,7 +55,7 @@ subprojects {
 	
 	dependencies {
 		compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: rootProject.ext.log4jVersion
-		compile 'org.projectlombok:lombok:1.16.6'
+		compile 'org.projectlombok:lombok:1.16.12'
 	}
 	
 	if (name.startsWith("RewiMod-Forge")) {
