@@ -132,7 +132,7 @@ public class CoreGuiDrawer {
 
 		RewiMod.getInstance().getDefaultButtonFactory().drawButton(button, xPos, yPos, width, isHovered ? ButtonFactory.ButtonState.HOVERED : ButtonFactory.ButtonState.ENABLED);
 
-		getTextureHandler().bindModTexture("textures/misc/" + (connectType == RewiButtonConnectType.MINECRAFT ? "rewiHead16" : "teamspeak256") + ".png");
+		getTextureHandler().bindModTexture("textures/misc/" + (connectType == RewiButtonConnectType.MINECRAFT ? "rewihead16" : "teamspeak256") + ".png");
 		getGlStateManager().color(1.0F, 1.0F, 1.0F);
 
 		drawCustomSizeRect(xPos + 3, yPos + 3, 0, 0, 14, 14);
