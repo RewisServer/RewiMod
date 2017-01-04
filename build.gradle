@@ -5,7 +5,7 @@ buildscript {
 	repositories {
 		mavenCentral()
 		jcenter()
-		jcenter()
+
 		maven {
 			name = "forge"
 			url = "http://files.minecraftforge.net/maven"
@@ -15,7 +15,7 @@ buildscript {
 	dependencies {
 		classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
 		classpath 'org.ajoberstar:gradle-git:1.6.0'
-		classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
+		classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.4'
 	}
 }
 
@@ -67,24 +67,28 @@ subprojects {
 			compile project(":RewiMod-Core")
 		}
 		
-		task copyMcmod << {
-			copy {
-				from "../RewiMod-Core/build/resources/main/mcmod.info"
-				into project.buildDir.getPath() + "/resources"
+		task copyMcmod {
+			doLast {
+				copy {
+					from "../RewiMod-Core/build/resources/main/mcmod.info"
+					into project.buildDir.getPath() + "/resources"
+				}
 			}
 		}
 		
 		build.dependsOn(copyMcmod)
 				
-		task copyCoreAssets << {
-			copy {
-				from "../RewiMod-Core/build/resources/main/assets"
-				into "build/classes/main/assets"
-			}
-			
-			copy {
-				from "../RewiMod-Core/build/resources/main/mcmod.info"
-				into "build/classes/main/assets"
+		task copyCoreAssets {
+			doLast {
+				copy {
+					from "../RewiMod-Core/build/resources/main/assets"
+					into "build/classes/main/assets"
+				}
+				
+				copy {
+					from "../RewiMod-Core/build/resources/main/mcmod.info"
+					into "build/classes/main/assets"
+				}
 			}
 		}
 		
@@ -105,11 +109,13 @@ subprojects {
 		run.dependsOn copyCoreAssets
 		run.debug = false
 
-		task debug() << {
-			run.debug = true
-			sourceSets {
-				main {
-					output.resourcesDir = "build/classes/main"
+		task debug() {
+			doLast {
+				run.debug = true
+				sourceSets {
+					main {
+						output.resourcesDir = "build/classes/main"
+					}
 				}
 			}
 		}
