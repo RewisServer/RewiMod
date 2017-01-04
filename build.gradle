@@ -58,6 +58,16 @@ subprojects {
 		compile 'org.projectlombok:lombok:1.16.12'
 	}
 	
+	compileJava {
+		options.encoding = 'UTF-8'
+		options.compilerArgs << "-Xlint:deprecation" << "-Xlint:unchecked"
+	}
+
+	compileTestJava {
+		options.encoding = 'UTF-8'
+		options.compilerArgs << "-Xlint:deprecation" << "-Xlint:unchecked"
+	}
+	
 	if (name.startsWith("RewiMod-Forge")) {
 		apply plugin: 'net.minecraftforge.gradle.forge'
 		
