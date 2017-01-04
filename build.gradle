@@ -68,6 +68,14 @@ subprojects {
 		options.compilerArgs << "-Xlint:deprecation" << "-Xlint:unchecked"
 	}
 	
+	task printHeader {
+		doFirst {
+			def line = "\n=~=~=~=~=~=~=~=~ RewiMod =~=~=~=~=~=~=~=~=\n"
+			println "${line}     ${project.name} v${project.version} ${line}";
+		}
+	}
+	compileJava.dependsOn printHeader
+	
 	if (name.startsWith("RewiMod-Forge")) {
 		apply plugin: 'net.minecraftforge.gradle.forge'
 		
@@ -76,6 +84,8 @@ subprojects {
 		dependencies {
 			compile project(":RewiMod-Core")
 		}
+
+		deobfCompileDummyTask.dependsOn printHeader
 		
 		task copyMcmod {
 			doLast {
@@ -191,7 +201,6 @@ subprojects {
 	build.dependsOn(checkstyleTest)
 	
 	afterEvaluate { project ->
-		println "=~=~=~=~=~=~=~=~ RewiMod =~=~=~=~=~=~=~=~=\n     ${project.name} v${project.version} \n=~=~=~=~=~=~=~=~ RewiMod =~=~=~=~=~=~=~=~=\n";
 		project.jar.archiveName = "${project.name}-${project.version}.jar"
 		
 		sourceCompatibility = 1.8
