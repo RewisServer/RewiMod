@@ -85,7 +85,7 @@ public class GuiRewiIngameMenu extends GuiIngameMenu {
 
 	@Override
 	protected void actionPerformed(GuiButton button) throws IOException {
-		String confirmMessage = RewiMod.getInstance().getMessages().getMessage("gui.confirmDisconnect");
+		String confirmMessage = RewiMod.getInstance().getMessageHandler().getMessage("gui.confirmDisconnect");
 
 		if (button.id == 1 && !button.displayString.equals(confirmMessage)) {
 			button.displayString = confirmMessage;

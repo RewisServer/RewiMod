@@ -2,7 +2,6 @@
 # Language File for Germany #
 # # # # # # # # # # # # # # #
 
-startup.signedFail = !!! KEINE ORIGINALE AUSGABE DER REWIMOD !!!
-gui.confirmDisconnect = Verlassen bestätigen
-gui.chatlogHistory = Deine Reports
-gui.overlay.time = Zeit
+gui.confirmDisconnect=Verlassen bestätigen
+gui.chatlogHistory=Deine Reports
+gui.overlay.time=Zeit

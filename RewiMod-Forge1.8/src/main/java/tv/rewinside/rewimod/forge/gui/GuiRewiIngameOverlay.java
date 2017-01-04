@@ -44,7 +44,7 @@ public class GuiRewiIngameOverlay extends Gui {
 	}
 
 	public void drawOverlay() {
-		String timeText = RewiMod.getInstance().getMessages().getMessage("gui.overlay.time");
+		String timeText = RewiMod.getInstance().getMessageHandler().getMessage("gui.overlay.time");
 		ServerData serverData = this.mc.getCurrentServerData();
 		long ping = serverData != null ? serverData.pingToServer : -1;
 

@@ -33,9 +33,9 @@ import tv.rewinside.rewimod.core.gui.ButtonFactory;
 import tv.rewinside.rewimod.core.handlers.IFontRendererObjHandler;
 import tv.rewinside.rewimod.core.handlers.IGlStateManagerHandler;
 import tv.rewinside.rewimod.core.handlers.IGuiHandler;
+import tv.rewinside.rewimod.core.handlers.IMessageHandler;
 import tv.rewinside.rewimod.core.handlers.ITextureHandler;
 import tv.rewinside.rewimod.core.util.Chatlog;
-import tv.rewinside.rewimod.core.util.Messages;
 
 public abstract class RewiMod {
 
@@ -44,8 +44,6 @@ public abstract class RewiMod {
 	public static final Logger LOGGER = LogManager.getLogger("RewiMod");
 
 	@Getter private static RewiMod instance;
-
-	@Getter private final Messages messages = new Messages();
 
 	@Getter private final ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
 
@@ -57,13 +55,6 @@ public abstract class RewiMod {
 
 	@Getter private final List<String> blacklistedWords = new ArrayList<>();
 	@Getter private final List<Chatlog> chatlogs = new ArrayList<>();
-
-	/**
-	 * Constructs a new RewiMod with the default Language loaded
-	 */
-	protected RewiMod() {
-		this.messages.load(null);
-	}
 
 	/**
 	 * Initializes the Mod
@@ -79,7 +70,6 @@ public abstract class RewiMod {
 		this.uuid = uuid;
 		this.username = username;
 
-		this.messages.load(language);
 		this.registerEvents();
 
 		this.setDisplayTitle("Minecraft " + this.getMinecraftVersion() + " - " + this.getName() + " " + this.getVersion() + " - " + this.getUsername());
@@ -91,7 +81,7 @@ public abstract class RewiMod {
 	 * Logs a warning, that the Fingerprint is invalid
 	 */
 	protected void onFingerprintViolation() {
-		LOGGER.warn(this.messages.getMessage("startup.signedFail"));
+		LOGGER.warn("!!! NO ORIGINAL REWIMOD VERSION !!!");
 	}
 
 	/**
@@ -188,5 +178,12 @@ public abstract class RewiMod {
 	 * @return an implementation of {@link tv.rewinside.rewimod.core.handlers.IGlStateManagerHandler}
 	 */
 	public abstract IGlStateManagerHandler getGlStateManagerHandler();
+
+	/**
+	 * Gets the handler for handling the Messages
+	 *
+	 * @return an implementation of {@link tv.rewinside.rewimod.core.handlers.IMessageHandler}
+	 */
+	public abstract IMessageHandler getMessageHandler();
 
 }

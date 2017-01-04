@@ -2,7 +2,6 @@
 # Language File for the USA #
 # # # # # # # # # # # # # # #
 
-startup.signedFail = !!! NO ORIGINAL REWIMOD VERSION !!!
-gui.confirmDisconnect = Confirm disconnect
-gui.chatlogHistory = Your reports
-gui.overlay.time = Time
+gui.confirmDisconnect=Confirm disconnect
+gui.chatlogHistory=Your reports
+gui.overlay.time=Time

@@ -36,11 +36,11 @@ import tv.rewinside.rewimod.core.gui.ButtonFactory;
 import tv.rewinside.rewimod.forge.handlers.FontRendererObjHandler;
 import tv.rewinside.rewimod.forge.handlers.GlStateManagerHandler;
 import tv.rewinside.rewimod.forge.handlers.GuiHandler;
+import tv.rewinside.rewimod.forge.handlers.MessageHandler;
 import tv.rewinside.rewimod.forge.handlers.TextureHandler;
 import tv.rewinside.rewimod.forge.listener.ChatListener;
 import tv.rewinside.rewimod.forge.listener.ConnectListener;
 import tv.rewinside.rewimod.forge.listener.GuiListener;
-import tv.rewinside.rewimod.forge.listener.LanguageListener;
 import tv.rewinside.rewimod.forge.listener.RenderListener;
 
 @Mod(modid = "%MOD_ID%", name = "%MOD_NAME%", version = "%MOD_VERSION%", canBeDeactivated = RewiMod.DEACTIVATEABLE, certificateFingerprint = RewiMod.FINGERPRINT)
@@ -50,6 +50,7 @@ public class RewiForgeMod extends RewiMod {
 	@Getter private final TextureHandler textureHandler = new TextureHandler();
 	@Getter private final GuiHandler guiHandler = new GuiHandler();
 	@Getter private final GlStateManagerHandler glStateManagerHandler = new GlStateManagerHandler();
+	@Getter private final MessageHandler messageHandler = new MessageHandler();
 	@Getter private final ButtonFactory defaultButtonFactory = new ButtonFactory("textures/gui/widgets.png", 200, 20, new Point(0, 46), new Point(0, 66), new Point(0, 86));
 
 	@Getter private final OldServerPinger pinger = new OldServerPinger();
@@ -75,7 +76,6 @@ public class RewiForgeMod extends RewiMod {
 		MinecraftForge.EVENT_BUS.register(new ChatListener());
 		MinecraftForge.EVENT_BUS.register(new ConnectListener());
 		MinecraftForge.EVENT_BUS.register(new RenderListener());
-		MinecraftForge.EVENT_BUS.register(new LanguageListener());
 	}
 
 	@Override

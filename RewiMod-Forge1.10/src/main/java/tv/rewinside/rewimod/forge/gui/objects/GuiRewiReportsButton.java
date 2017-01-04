@@ -27,7 +27,7 @@ import tv.rewinside.rewimod.forge.gui.GuiRewiReportScreen;
 public class GuiRewiReportsButton extends GuiButton implements IGuiButton {
 
 	public GuiRewiReportsButton(int buttonId, int x, int y, int width) {
-		super(buttonId, x, y, width, 20, RewiForgeMod.getInstance().getMessages().getMessage("gui.chatlogHistory"));
+		super(buttonId, x, y, width, 20, RewiForgeMod.getInstance().getMessageHandler().getMessage("gui.chatlogHistory"));
 	}
 
 	@Override
