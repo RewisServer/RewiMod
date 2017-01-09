@@ -16,17 +16,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package tv.rewinside.rewimod.forge.event;
+package tv.rewinside.rewimod.core.handlers;
 
-import lombok.Getter;
-import net.minecraftforge.fml.common.eventhandler.Event;
+public interface IMessageHandler {
 
-public class LanguageChangedEvent extends Event {
-
-	@Getter private final String locale;
-
-	public LanguageChangedEvent(String locale) {
-		this.locale = locale;
-	}
-
+	/**
+	 * Gets the Message
+	 *
+	 * @param key the key of the message
+	 * @return the message
+	 */
+	public String getMessage(String key);
 }

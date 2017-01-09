@@ -16,18 +16,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package tv.rewinside.rewimod.forge.listener;
+package tv.rewinside.rewimod.forge.handlers;
 
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import tv.rewinside.rewimod.core.RewiMod;
-import tv.rewinside.rewimod.forge.event.LanguageChangedEvent;
+import net.minecraft.client.resources.I18n;
+import tv.rewinside.rewimod.core.handlers.IMessageHandler;
 
+public class MessageHandler implements IMessageHandler {
 
-public class LanguageListener {
-
-	@SubscribeEvent
-	public void onChange(LanguageChangedEvent event) {
-		RewiMod.getInstance().getMessages().load(event.getLocale());
+	@Override
+	public String getMessage(String key) {
+		return I18n.format(key, new Object[0]);
 	}
 
 }
