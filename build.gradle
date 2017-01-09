@@ -5,7 +5,7 @@ buildscript {
 	repositories {
 		mavenCentral()
 		jcenter()
-		jcenter()
+
 		maven {
 			name = "forge"
 			url = "http://files.minecraftforge.net/maven"
@@ -15,7 +15,7 @@ buildscript {
 	dependencies {
 		classpath 'net.minecraftforge.gradle:ForgeGradle:2.2-SNAPSHOT'
 		classpath 'org.ajoberstar:gradle-git:1.6.0'
-		classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
+		classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.4'
 	}
 }
 
@@ -58,6 +58,24 @@ subprojects {
 		compile 'org.projectlombok:lombok:1.16.12'
 	}
 	
+	compileJava {
+		options.encoding = 'UTF-8'
+		options.compilerArgs << "-Xlint:deprecation" << "-Xlint:unchecked"
+	}
+
+	compileTestJava {
+		options.encoding = 'UTF-8'
+		options.compilerArgs << "-Xlint:deprecation" << "-Xlint:unchecked"
+	}
+	
+	task printHeader {
+		doFirst {
+			def line = "\n=~=~=~=~=~=~=~=~ RewiMod =~=~=~=~=~=~=~=~=\n"
+			println "${line}     ${project.name} v${project.version} ${line}";
+		}
+	}
+	compileJava.dependsOn printHeader
+	
 	if (name.startsWith("RewiMod-Forge")) {
 		apply plugin: 'net.minecraftforge.gradle.forge'
 		
@@ -66,25 +84,31 @@ subprojects {
 		dependencies {
 			compile project(":RewiMod-Core")
 		}
+
+		deobfCompileDummyTask.dependsOn printHeader
 		
-		task copyMcmod << {
-			copy {
-				from "../RewiMod-Core/build/resources/main/mcmod.info"
-				into project.buildDir.getPath() + "/resources"
+		task copyMcmod {
+			doLast {
+				copy {
+					from "../RewiMod-Core/build/resources/main/mcmod.info"
+					into project.buildDir.getPath() + "/resources"
+				}
 			}
 		}
 		
 		build.dependsOn(copyMcmod)
 				
-		task copyCoreAssets << {
-			copy {
-				from "../RewiMod-Core/build/resources/main/assets"
-				into "build/classes/main/assets"
-			}
-			
-			copy {
-				from "../RewiMod-Core/build/resources/main/mcmod.info"
-				into "build/classes/main/assets"
+		task copyCoreAssets {
+			doLast {
+				copy {
+					from "../RewiMod-Core/build/resources/main/assets"
+					into "build/classes/main/assets"
+				}
+				
+				copy {
+					from "../RewiMod-Core/build/resources/main/mcmod.info"
+					into "build/classes/main/assets"
+				}
 			}
 		}
 		
@@ -105,11 +129,13 @@ subprojects {
 		run.dependsOn copyCoreAssets
 		run.debug = false
 
-		task debug() << {
-			run.debug = true
-			sourceSets {
-				main {
-					output.resourcesDir = "build/classes/main"
+		task debug() {
+			doLast {
+				run.debug = true
+				sourceSets {
+					main {
+						output.resourcesDir = "build/classes/main"
+					}
 				}
 			}
 		}
@@ -175,7 +201,6 @@ subprojects {
 	build.dependsOn(checkstyleTest)
 	
 	afterEvaluate { project ->
-		println "=~=~=~=~=~=~=~=~ RewiMod =~=~=~=~=~=~=~=~=\n     ${project.name} v${project.version} \n=~=~=~=~=~=~=~=~ RewiMod =~=~=~=~=~=~=~=~=\n";
 		project.jar.archiveName = "${project.name}-${project.version}.jar"
 		
 		sourceCompatibility = 1.8
