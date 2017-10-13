@@ -24,7 +24,7 @@ Alles weitere findet ihr in der [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Kontakt
 -------
-Die Projektleitung besteht aus ComputerBaer und Floppy012. Wir sind auf dem [rewinside.tv-TeamSpeak Server](ts3server://ts.rewinside.tv) oder auf dem RewiMod-Discord Server zu finden.
+Die Projektleitung erfolgt durch Howaner und die Entwickler von RewisServer. Wir sind auf dem [rewinside.tv-TeamSpeak Server](ts3server://ts.rewinside.tv) oder auf dem RewiMod-Discord Server zu finden.
 
 RewiMod Discord Server
 -------
